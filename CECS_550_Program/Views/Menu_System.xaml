@@ -1,0 +1,32 @@
+﻿<Page
+    x:Class="CECS_550_Program.Menu_System"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CECS_550_Program"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <SplitView x:Name="MainSplitView" DisplayMode="CompactOverlay" IsPaneOpen="False" CompactPaneLength="50" OpenPaneLength="175">
+        <SplitView.Pane>
+            <StackPanel Background="Gray">
+                <Button x:Name="MenuButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" Width="50" Height="50" Background="Transparent" Click="MenuButton_Click" />
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="HomeButton" FontFamily="Segoe MDL2 Assets" Content="&#xE80F;" Width="50" Height="50" Background="Transparent" Click="HomeButton_Click" />
+                    <TextBlock Text="Home" FontSize="18" VerticalAlignment="Center" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="UserButton" FontFamily="Segoe MDL2 Assets" Content="&#xE77B;" Width="50" Height="50" Background="Transparent" FontSize="18" Click="UserButton_Click" />
+                    <TextBlock Text="User Settings" FontSize="18" VerticalAlignment="Center" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="AboutButton" FontFamily="Segoe MDL2 Assets" Content="&#xE897;" Width="50" Height="50" Background="Transparent" FontSize="18" Click="AboutButton_Click" />
+                    <TextBlock Text="About" FontSize="18" VerticalAlignment="Center" />
+                </StackPanel>
+            </StackPanel>
+        </SplitView.Pane>
+        <SplitView.Content>
+            <Frame Name="PageFrame"></Frame>
+        </SplitView.Content>
+    </SplitView>
+</Page>

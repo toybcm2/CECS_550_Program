@@ -1,5 +1,6 @@
 ﻿{
   "dependencies": {
+    "EntityFramework": "6.1.3",
     "Microsoft.Net.Http": "2.2.29",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
     "WebRTC": "1.2.69"

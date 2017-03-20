@@ -17,10 +17,11 @@
             <TextBlock Text="Enter your email address below" Margin="0,0,0,20" TextWrapping="Wrap" Width="300" TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
             <TextBox x:Name="EmailAddressTextBox" Margin="4" Width="250"/>
             <TextBlock Text="Enter your password below" Margin="0,0,0,20" TextWrapping="Wrap" Width="300" TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
-            <TextBox x:Name="PasswordTextBox" Margin="4" Width="250"/>
+            <PasswordBox x:Name="PasswordTextBox" Margin="4" Width="250"/>
             <TextBlock Text="Confirm your password below" Margin="0,0,0,20" TextWrapping="Wrap" Width="300" TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
-            <TextBox x:Name="ConfirmPasswordTextBox" Margin="4" Width="250"/>
+            <PasswordBox x:Name="ConfirmPasswordTextBox" Margin="4" Width="250"/>
             <Button x:Name="RegisterButton" Content="Register" Background="Gray" Foreground="White" Click="RegisterButton_Click" Width="80" HorizontalAlignment="Center" Margin="0,20"/>
+            <TextBlock x:Name="ErrorMessage" Text="" FontSize="20" Margin="4" Foreground="Red" TextAlignment="Center" VerticalAlignment="Center"/>
         </StackPanel>
     </Grid>
 </Page>

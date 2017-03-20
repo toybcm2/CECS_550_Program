@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+﻿using System.Text.RegularExpressions;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -29,7 +18,35 @@ namespace CECS_550_Program
 
         private void RegisterButton_Click(object sender, RoutedEventArgs e)
         {
-
+            if (FirstNameTextBox.Text == "" || LastNameTextBox.Text == "" || EmailAddressTextBox.Text == "" || PasswordTextBox.Password == "" || ConfirmPasswordTextBox.Password == "")
+            {
+                ErrorMessage.Text = "Something has been left incomplete";
+            }
+            else if (!Regex.IsMatch(FirstNameTextBox.Text.Trim(), @"^[A-Z][a-zA-Z]*$"))
+            {
+                ErrorMessage.Text = "First name is not allowed";                
+            }
+            else if (!Regex.IsMatch(LastNameTextBox.Text.Trim(), @"^[A-Z][a-zA-Z]*$"))
+            {
+                ErrorMessage.Text = "Last name is not allowed";
+            }
+            else if (!Regex.IsMatch(EmailAddressTextBox.Text.Trim(), @"^([a-zA-Z_])([a-zA-Z0-9_\-\.]*)@(\[((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}|((([a-zA-Z0-9\-]+)\.)+))([a-zA-Z]{2,}|(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\])$"))
+            {
+                ErrorMessage.Text = "Email address is not allowed";
+            }
+            else if (PasswordTextBox.Password.Length < 6)
+            {
+                ErrorMessage.Text = "Password length should be a minimum of 6 characters";
+            }
+            else if ((string.Compare(PasswordTextBox.Password, ConfirmPasswordTextBox.Password) == -1))
+            {
+                ErrorMessage.Text = "Password does not match";
+            }
+            else
+            {
+                ErrorMessage.Text = "";
+                //Run data and create account in database
+            }
         }
     }
 }

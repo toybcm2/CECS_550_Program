@@ -48,7 +48,7 @@ namespace CECS_550_Program
 
         private void AboutButton_Click(object sender, RoutedEventArgs e)
         {
-            PageFrame.Navigate(typeof(About_Page));
+            PageFrame.Navigate(typeof(Event_Page));
         }
 
         private void PageFrame_Navigated(object sender, NavigationEventArgs e)

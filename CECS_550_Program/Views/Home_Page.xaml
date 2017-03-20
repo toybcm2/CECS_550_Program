@@ -8,6 +8,56 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Hub Header = "Hi, this is the Main Page" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock x:Name="CalendarBlock" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+            This is where the calendar control will go.
+        </TextBlock>
+        <StackPanel x:Name="Weather_Panel" Grid.Row="0" Grid.Column="1" Background="AliceBlue">
+            <Image x:Name="Weather_Image" Height="100" Width="100" Margin="30"/>
+            <TextBlock x:Name="Result_Text_Block" TextAlignment="Center"/>
+        </StackPanel>
+        <ListView x:Name="TodaysEvents" Grid.Row="0" Grid.Column="2">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="x:String">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="400"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{x:Bind}" Foreground="Black" FontSize="36" Grid.Column="1" HorizontalAlignment="Right"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="Background" Value="Gray"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <x:String>Event 1 12:00 PM</x:String>
+            <x:String>Event 2 12:00 PM</x:String>
+            <x:String>Event 3 12:00 PM</x:String>
+            <x:String>Event 4 12:00 PM</x:String>
+            <x:String>Event 5 12:00 PM</x:String>
+            <x:String>Event 6 12:00 PM</x:String>
+            <x:String>Event 7 12:00 PM</x:String>
+            <x:String>Event 8 12:00 PM</x:String>
+            <x:String>Event 9 12:00 PM</x:String>
+            <x:String>Event 10 12:00 PM</x:String>
+            <x:String>Event 11 12:00 PM</x:String>
+            <x:String>Event 12 12:00 PM</x:String>
+            <x:String>Event 13 12:00 PM</x:String>
+            <x:String>Event 14 12:00 PM</x:String>
+            <x:String>Event 15 12:00 PM</x:String>
+        </ListView>
+        <TextBlock x:Name="ContactsBlock" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+            This is where the calendar control will go.
+        </TextBlock>
     </Grid>
 </Page>

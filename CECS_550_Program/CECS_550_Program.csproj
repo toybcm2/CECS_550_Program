@@ -17,6 +17,9 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <PackageCertificateKeyFile>CECS_550_Program_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
+    <AppxBundle>Always</AppxBundle>
+    <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -92,7 +95,9 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Utils\LocationManager.cs" />
     <Compile Include="Models\Menu_Items.cs" />
+    <Compile Include="Utils\OpenWeatherMapProxy.cs" />
     <Compile Include="Views\About_Page.xaml.cs">
       <DependentUpon>About_Page.xaml</DependentUpon>
     </Compile>
@@ -126,6 +131,54 @@
     <None Include="CECS_550_Program_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\weather\01d.png" />
+    <Content Include="Assets\weather\01n.png" />
+    <Content Include="Assets\weather\02d.png" />
+    <Content Include="Assets\weather\02n.png" />
+    <Content Include="Assets\weather\03d.png" />
+    <Content Include="Assets\weather\03n.png" />
+    <Content Include="Assets\weather\04d.png" />
+    <Content Include="Assets\weather\04n.png" />
+    <Content Include="Assets\weather\09d.png" />
+    <Content Include="Assets\weather\09n.png" />
+    <Content Include="Assets\weather\10d.png" />
+    <Content Include="Assets\weather\10n.png" />
+    <Content Include="Assets\weather\11d.png" />
+    <Content Include="Assets\weather\11n.png" />
+    <Content Include="Assets\weather\13d.png" />
+    <Content Include="Assets\weather\13n.png" />
+    <Content Include="Assets\weather\50d.png" />
+    <Content Include="Assets\weather\50n.png" />
+    <Content Include="Assets\weather\chanceflurries.png" />
+    <Content Include="Assets\weather\chancerain.png" />
+    <Content Include="Assets\weather\chancesleet.png" />
+    <Content Include="Assets\weather\chancesnow.png" />
+    <Content Include="Assets\weather\chancestorm.png" />
+    <Content Include="Assets\weather\cloudywindy.png" />
+    <Content Include="Assets\weather\cloudywindy02.png" />
+    <Content Include="Assets\weather\freezing.png" />
+    <Content Include="Assets\weather\freezingrain.png" />
+    <Content Include="Assets\weather\freezingsnow.png" />
+    <Content Include="Assets\weather\frost.png" />
+    <Content Include="Assets\weather\hazy.png" />
+    <Content Include="Assets\weather\hazyfreezing.png" />
+    <Content Include="Assets\weather\hazysnow.png" />
+    <Content Include="Assets\weather\hot01.png" />
+    <Content Include="Assets\weather\hot02.png" />
+    <Content Include="Assets\weather\mostlysunny.png" />
+    <Content Include="Assets\weather\partlycloudy.png" />
+    <Content Include="Assets\weather\partlycloundynight.png" />
+    <Content Include="Assets\weather\rain01.png" />
+    <Content Include="Assets\weather\rain02.png" />
+    <Content Include="Assets\weather\rain03.png" />
+    <Content Include="Assets\weather\rainbow.png" />
+    <Content Include="Assets\weather\sleet.png" />
+    <Content Include="Assets\weather\snow.png" />
+    <Content Include="Assets\weather\snow01.png" />
+    <Content Include="Assets\weather\thunder.png" />
+    <Content Include="Assets\weather\thunderstorms01.png" />
+    <Content Include="Assets\weather\unknown.png" />
+    <Content Include="Assets\weather\windy.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -172,7 +225,6 @@
   <ItemGroup>
     <Folder Include="Controls\" />
     <Folder Include="Styles\" />
-    <Folder Include="Utils\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

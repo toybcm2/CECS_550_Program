@@ -16,6 +16,45 @@
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <Hub Header = "Hi, this is the Event Page. This area will contain current speaker/webcam" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0"/>
+        <MediaPlayerElement x:Name="mediaPlayerElement" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" AreTransportControlsEnabled="True"/>
+        <ListView x:Name="UpcomingSpeaker" Grid.Row="0" Grid.Column="1">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="x:String">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="400"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Source="/Assets/weather/01d.png" Width="20" Height="20" HorizontalAlignment="Left"/>
+                        <TextBlock Text="{x:Bind}" Foreground="Black" FontSize="36" Grid.Column="1" HorizontalAlignment="Right"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="Background" Value="Gray"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <x:String>User 1</x:String>
+            <x:String>User 2</x:String>
+            <x:String>User 3</x:String>
+            <x:String>User 4</x:String>
+            <x:String>User 5</x:String>
+            <x:String>User 6</x:String>
+            <x:String>User 7</x:String>
+            <x:String>User 8</x:String>
+            <x:String>User 9</x:String>
+            <x:String>User 10</x:String>
+            <x:String>User 11</x:String>
+            <x:String>User 12</x:String>
+            <x:String>User 13</x:String>
+            <x:String>User 14</x:String>
+            <x:String>User 15</x:String>
+        </ListView>
+        <TextBlock x:Name="ChatWindow" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+            This is where the chat system will go.
+        </TextBlock>
+        <TextBlock x:Name="MeetingTopics" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            This is where the topics covered in the meeting will go.
+        </TextBlock>
     </Grid>
 </Page>

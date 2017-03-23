@@ -95,6 +95,9 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Views\PrivateChatMenu.xaml.cs">
+      <DependentUpon>PrivateChatMenu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Utils\LocationManager.cs" />
     <Compile Include="Models\Menu_Items.cs" />
     <Compile Include="Utils\OpenWeatherMapProxy.cs" />
@@ -193,6 +196,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Views\PrivateChatMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\About_Page.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

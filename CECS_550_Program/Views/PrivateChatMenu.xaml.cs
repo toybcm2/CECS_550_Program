@@ -20,21 +20,11 @@ namespace CECS_550_Program
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class User_Settings_Page : Page
+    public sealed partial class PrivateChatMenu : Page
     {
-        public User_Settings_Page()
+        public PrivateChatMenu()
         {
             this.InitializeComponent();
-        }
-
-        private void ConfirmButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.Frame.Navigate(typeof(Home_Page));
-        }
-
-        private void EditPhotoButtonTextBlock_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            this.Frame.Navigate(typeof(Register_Page));
         }
     }
 }

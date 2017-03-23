@@ -14,7 +14,8 @@ namespace CECS_550_Program
             var accessStatus = await Geolocator.RequestAccessAsync();
             if (accessStatus != GeolocationAccessStatus.Allowed)
             {
-                throw new Exception();
+                //throw new Exception();
+                accessStatus = await Geolocator.RequestAccessAsync();
             }
             var geoLocator = new Geolocator { DesiredAccuracyInMeters = 0 };
             var position = await geoLocator.GetGeopositionAsync();

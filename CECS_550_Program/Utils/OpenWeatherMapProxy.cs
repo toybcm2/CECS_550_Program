@@ -72,7 +72,7 @@ namespace CECS_550_Program
         [DataMember]
         public double speed { get; set; }
         [DataMember]
-        public int deg { get; set; }
+        public double deg { get; set; }
     }
 
     [DataContract]

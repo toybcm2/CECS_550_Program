@@ -7,7 +7,20 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Hub Header = "Hi, this is the User Settings Page" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    <Grid x:Name="UserSettingsLayoutRoot" Background="White">
+        <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+            <TextBlock Text="Profile Image" Margin="0,20,0,0" TextWrapping="Wrap" Width="300" TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+            <TextBlock x:Name="EditPhotoTextBlock" Text="Edit Photo" Foreground="Gray" TextAlignment="Center" VerticalAlignment="Center" FontSize="16" Tapped="EditPhotoButtonTextBlock_Tapped"/>
+            <Image Source="/Assets/weather/01d.png" Width="200" Height="200" Margin="0,0,0,20" HorizontalAlignment="Center"/>
+            <TextBlock Text="Username" Margin="0,0,0,0" TextWrapping="Wrap" Width="300" TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+            <TextBox x:Name="UsernameTextBox" Text="John Testsubject" TextAlignment="Center" Margin="4" Width="250"/>
+            <TextBlock Text="First Name" Margin="0,0,0,0" TextWrapping="Wrap" Width="300" TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+            <TextBox x:Name="FirstNameTextBox" Text="John" TextAlignment="Center" Margin="4" Width="250"/>
+            <TextBlock Text="Last Name" Margin="0,0,0,0" TextWrapping="Wrap" Width="300" TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+            <TextBox x:Name="LastNameTextBox" Text="Baker" TextAlignment="Center" Margin="4" Width="250"/>
+            <TextBlock Text="Email" Margin="0,0,0,0" TextWrapping="Wrap" Width="300" TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+            <TextBox x:Name="EmailTextBox" Text="johnbaker@email.com" TextAlignment="Center" Margin="4" Width="250"/>
+            <Button x:Name="ConfirmButton" Content="Confirm" Background="Gray" Foreground="White" Click="ConfirmButton_Click" Width="80" HorizontalAlignment="Center" Margin="0,20"/>
+        </StackPanel>
     </Grid>
 </Page>

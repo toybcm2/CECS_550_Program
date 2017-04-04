@@ -7,27 +7,90 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" x:Name="MainGrid">
-        <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup>
-                <VisualState>
+    <Grid Name="LayoutRoot" Background="Gray">
+        <!--<VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="VisualStateGroup">
+                <VisualState x:Name="Desktop">
                     <VisualState.StateTriggers>
-                        <!-- VisualState to be triggered when window
-                         width is >=720 effective pixels. -->
                         <AdaptiveTrigger MinWindowWidth="720" />
                     </VisualState.StateTriggers>
-
                     <VisualState.Setters>
-                        <Setter Target="myPanel.Orientation"
-                                Value="Horizontal" />
+                        <Setter Target="Calendar_Panel.(Grid.Row)" Value="0" />
+                        <Setter Target="Calendar_Panel.(Grid.Column)" Value="0" />
+                        <Setter Target="Current_Day_Events_Panel.(Grid.Row)" Value="0" />
+                        <Setter Target="Current_Day_Events_Panel.(Grid.Column)" Value="1" />
+                        <Setter Target="Upcoming_Events_Panel.(Grid.Row)" Value="0" />
+                        <Setter Target="Upcoming_Events_Panel.(Grid.Column)" Value="2" />
+                        <Setter Target="Weather_Panel.(Grid.Row)" Value="1" />
+                        <Setter Target="Weather_Panel.(Grid.Column)" Value="0" />
+                        <Setter Target="Active_Meeting_Panel.(Grid.Row)" Value="1" />
+                        <Setter Target="Active_Meeting_Panel.(Grid.Column)" Value="1" />
+                        <Setter Target="Contacts_Panel.(Grid.Row)" Value="1" />
+                        <Setter Target="Contacts_Panel.(Grid.Column)" Value="2" />
+
+                        <Setter Target="Calendar_Panel.(Grid.ColumnSpan)" Value="1" />
+                        <Setter Target="Current_Day_Events_Panel.(Grid.ColumnSpan)" Value="1" />
+                        <Setter Target="Upcoming_Events_Panel.(Grid.ColumnSpan)" Value="1" />
+                        <Setter Target="Weather_Panel.(Grid.ColumnSpan)" Value="1" />
+                        <Setter Target="Active_Meeting_Panel.(Grid.ColumnSpan)" Value="1" />
+                        <Setter Target="Contacts_Panel.(Grid.ColumnSpan)" Value="1" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Mobile">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="Calendar_Panel.(Grid.Row)" Value="0" />
+                        <Setter Target="Calendar_Panel.(Grid.Column)" Value="0" />
+                        <Setter Target="Current_Day_Events_Panel.(Grid.Row)" Value="0" />
+                        <Setter Target="Current_Day_Events_Panel.(Grid.Column)" Value="1" />
+                        <Setter Target="Upcoming_Events_Panel.(Grid.Row)" Value="0" />
+                        <Setter Target="Upcoming_Events_Panel.(Grid.Column)" Value="2" />
+                        <Setter Target="Weather_Panel.(Grid.Row)" Value="1" />
+                        <Setter Target="Weather_Panel.(Grid.Column)" Value="0" />
+                        <Setter Target="Active_Meeting_Panel.(Grid.Row)" Value="1" />
+                        <Setter Target="Active_Meeting_Panel.(Grid.Column)" Value="1" />
+                        <Setter Target="Contacts_Panel.(Grid.Row)" Value="1" />
+                        <Setter Target="Contacts_Panel.(Grid.Column)" Value="2" />
+
+                        <Setter Target="Calendar_Panel.(Grid.ColumnSpan)" Value="1" />
+                        <Setter Target="Current_Day_Events_Panel.(Grid.ColumnSpan)" Value="1" />
+                        <Setter Target="Upcoming_Events_Panel.(Grid.ColumnSpan)" Value="1" />
+                        <Setter Target="Weather_Panel.(Grid.ColumnSpan)" Value="1" />
+                        <Setter Target="Active_Meeting_Panel.(Grid.ColumnSpan)" Value="1" />
+                        <Setter Target="Contacts_Panel.(Grid.ColumnSpan)" Value="1" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>
-        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-            <StackPanel x:Name="myPanel" Orientation="Vertical">
-                <CalendarView VerticalAlignment="Center" HorizontalAlignment="Center"></CalendarView>
-                <ListView x:Name="TodaysEvents" MaxHeight="500">
+        </VisualStateManager.VisualStateGroups>-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="9*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel x:Name="Weather_Image_Panel" Grid.RowSpan="1" Grid.ColumnSpan="1" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Image x:Name="Weather_Image" Width="40" Height="40"/>
+            </StackPanel>
+            <StackPanel x:Name="Weather_Message_Panel" Grid.RowSpan="1" Grid.ColumnSpan="2" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">
+                <TextBlock x:Name="Result_Text_Block" TextAlignment="Center"/>
+            </StackPanel>
+            <StackPanel x:Name="Time_Panel" Grid.RowSpan="1" Grid.ColumnSpan="1" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock x:Name="Time" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+            </StackPanel>
+            <DatePicker x:Name="User_Date_Picker" Grid.RowSpan="1" Grid.ColumnSpan="3" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></DatePicker>
+            <StackPanel x:Name="Current_Day_Events_Panel" Grid.RowSpan="1" Grid.ColumnSpan="3" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <ListView x:Name="TodaysEvents">
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="x:String">
                             <Grid>
@@ -59,17 +122,10 @@
                     <x:String>Event 14 12:00 PM</x:String>
                     <x:String>Event 15 12:00 PM</x:String>
                 </ListView>
-                <StackPanel x:Name="Weather_Panel" Background="AliceBlue">
-                    <Image x:Name="Weather_Image" Height="auto" Width="auto" Margin="30"/>
-                    <TextBlock x:Name="Result_Text_Block" TextAlignment="Center" Margin="30"/>
-                </StackPanel>
-                <CalendarView VerticalAlignment="Center" HorizontalAlignment="Center"></CalendarView>
-                <CalendarView VerticalAlignment="Center" HorizontalAlignment="Center"></CalendarView>
-                <CalendarView VerticalAlignment="Center" HorizontalAlignment="Center"></CalendarView>
-                <CalendarView VerticalAlignment="Center" HorizontalAlignment="Center"></CalendarView>
-                <CalendarView VerticalAlignment="Center" HorizontalAlignment="Center"></CalendarView>
-                <CalendarView VerticalAlignment="Center" HorizontalAlignment="Center"></CalendarView>
             </StackPanel>
-        </ScrollViewer>
+            <Button x:Name="Add_Events_Button" Content="Add" Background="Gray" Foreground="White" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Add_Events_Button_Click"/>
+            <Button x:Name="Remove_Events_Button" Content="Remove" Background="Gray" Foreground="White" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Remove_Events_Button_Click"/>
+            <Button x:Name="Other_Events_Button" Content="Other" Background="Gray" Foreground="White" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Other_Events_Button_Click"/>
+        </Grid>
     </Grid>
 </Page>

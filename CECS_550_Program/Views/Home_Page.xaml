@@ -71,8 +71,8 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="9*"/>
-                <RowDefinition Height="2*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -89,40 +89,40 @@
                 <TextBlock x:Name="Time" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
             </StackPanel>
             <DatePicker x:Name="User_Date_Picker" Grid.RowSpan="1" Grid.ColumnSpan="3" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></DatePicker>
-            <StackPanel x:Name="Current_Day_Events_Panel" Grid.RowSpan="1" Grid.ColumnSpan="3" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <Grid x:Name="Current_Day_Events_Panel" Grid.RowSpan="1" Grid.ColumnSpan="3" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                 <ListView x:Name="TodaysEvents">
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="x:String">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="auto"/>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock x:Name="Test" Text="{x:Bind}" Foreground="Black" FontSize="36" HorizontalAlignment="Right"/>
-                            </Grid>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                    <ListView.ItemContainerStyle>
-                        <Style TargetType="ListViewItem">
-                            <Setter Property="Background" Value="Gray"/>
-                        </Style>
-                    </ListView.ItemContainerStyle>
-                    <x:String>Event 1 12:00 PM</x:String>
-                    <x:String>Event 2 12:00 PM</x:String>
-                    <x:String>Event 3 12:00 PM</x:String>
-                    <x:String>Event 4 12:00 PM</x:String>
-                    <x:String>Event 5 12:00 PM</x:String>
-                    <x:String>Event 6 12:00 PM</x:String>
-                    <x:String>Event 7 12:00 PM</x:String>
-                    <x:String>Event 8 12:00 PM</x:String>
-                    <x:String>Event 9 12:00 PM</x:String>
-                    <x:String>Event 10 12:00 PM</x:String>
-                    <x:String>Event 11 12:00 PM</x:String>
-                    <x:String>Event 12 12:00 PM</x:String>
-                    <x:String>Event 13 12:00 PM</x:String>
-                    <x:String>Event 14 12:00 PM</x:String>
-                    <x:String>Event 15 12:00 PM</x:String>
-                </ListView>
-            </StackPanel>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock x:Name="Test" Text="{x:Bind}" Foreground="Black" FontSize="36" HorizontalAlignment="Right"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="Background" Value="Gray"/>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                        <x:String>Event 1 12:00 PM</x:String>
+                        <x:String>Event 2 12:00 PM</x:String>
+                        <x:String>Event 3 12:00 PM</x:String>
+                        <x:String>Event 4 12:00 PM</x:String>
+                        <x:String>Event 5 12:00 PM</x:String>
+                        <x:String>Event 6 12:00 PM</x:String>
+                        <x:String>Event 7 12:00 PM</x:String>
+                        <x:String>Event 8 12:00 PM</x:String>
+                        <x:String>Event 9 12:00 PM</x:String>
+                        <x:String>Event 10 12:00 PM</x:String>
+                        <x:String>Event 11 12:00 PM</x:String>
+                        <x:String>Event 12 12:00 PM</x:String>
+                        <x:String>Event 13 12:00 PM</x:String>
+                        <x:String>Event 14 12:00 PM</x:String>
+                        <x:String>Event 15 12:00 PM</x:String>
+                    </ListView>
+            </Grid>
             <Button x:Name="Add_Events_Button" Content="Add" Background="Gray" Foreground="White" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Add_Events_Button_Click"/>
             <Button x:Name="Remove_Events_Button" Content="Remove" Background="Gray" Foreground="White" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Remove_Events_Button_Click"/>
             <Button x:Name="Other_Events_Button" Content="Other" Background="Gray" Foreground="White" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Other_Events_Button_Click"/>

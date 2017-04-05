@@ -28,6 +28,21 @@ namespace CECS_550_Program
             SystemNavigationManager.GetForCurrentView().BackRequested += OnBackRequested;
         }
 
+        public async void Create_New_Contact_Chat_Page()
+        {
+            CoreApplicationView newView = CoreApplication.CreateNewView();
+            int newViewId = 0;
+            await newView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+            {
+                Frame frame = new Frame();
+                frame.Navigate(typeof(PrivateChatMenu), null);
+                Window.Current.Content = frame;
+                Window.Current.Activate();
+                newViewId = ApplicationView.GetForCurrentView().Id;
+            });
+            bool viewShown = await ApplicationViewSwitcher.TryShowAsStandaloneAsync(newViewId);
+        }
+
         private void MenuButton_Click(object sender, RoutedEventArgs e)
         {
             MainSplitView.IsPaneOpen = !MainSplitView.IsPaneOpen;
@@ -48,19 +63,9 @@ namespace CECS_550_Program
             PageFrame.Navigate(typeof(Event_Page));
         }
 
-        private async void AboutButton2_Click(object sender, RoutedEventArgs e)
+        private void AboutButton2_Click(object sender, RoutedEventArgs e)
         {
-            CoreApplicationView newView = CoreApplication.CreateNewView();
-            int newViewId = 0;
-            await newView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
-            {
-                Frame frame = new Frame();
-                frame.Navigate(typeof(PrivateChatMenu), null);
-                Window.Current.Content = frame;
-                Window.Current.Activate();
-                newViewId = ApplicationView.GetForCurrentView().Id;
-            });
-            bool viewShown = await ApplicationViewSwitcher.TryShowAsStandaloneAsync(newViewId);
+            PageFrame.Navigate(typeof(Contacts_Page));
         }
 
         private void ChatWindowCallBack(IAsyncResult arg)

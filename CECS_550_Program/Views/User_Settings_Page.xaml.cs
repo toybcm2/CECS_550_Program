@@ -17,9 +17,6 @@ using Windows.UI.Xaml.Navigation;
 
 namespace CECS_550_Program
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class User_Settings_Page : Page
     {
         public User_Settings_Page()

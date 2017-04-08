@@ -10,21 +10,26 @@
     <SplitView x:Name="MainSplitView" DisplayMode="CompactOverlay" IsPaneOpen="False" CompactPaneLength="50" OpenPaneLength="175">
         <SplitView.Pane>
             <StackPanel Background="Gray">
-                <Button x:Name="MenuButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" Width="50" Height="50" Background="Transparent" Click="MenuButton_Click" />
+                <Button x:Name="MenuButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" Width="50" Height="50" 
+                        Background="Transparent" Click="MenuButton_Click" />
                 <StackPanel Orientation="Horizontal">
-                    <Button x:Name="HomeButton" FontFamily="Segoe MDL2 Assets" Content="&#xE80F;" Width="50" Height="50" Background="Transparent" Click="HomeButton_Click" />
+                    <Button x:Name="HomeButton" FontFamily="Segoe MDL2 Assets" Content="&#xE80F;" Width="50" Height="50" 
+                            Background="Transparent" Click="HomeButton_Click" />
                     <TextBlock Text="Home" FontSize="18" VerticalAlignment="Center" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <Button x:Name="UserButton" FontFamily="Segoe MDL2 Assets" Content="&#xE77B;" Width="50" Height="50" Background="Transparent" FontSize="18" Click="UserButton_Click" />
+                    <Button x:Name="UserButton" FontFamily="Segoe MDL2 Assets" Content="&#xE77B;" Width="50" Height="50"
+                     Background="Transparent" FontSize="18" Click="UserButton_Click" />
                     <TextBlock Text="User Settings" FontSize="18" VerticalAlignment="Center" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <Button x:Name="AboutButton" FontFamily="Segoe MDL2 Assets" Content="&#xE897;" Width="50" Height="50" Background="Transparent" FontSize="18" Click="AboutButton_Click" />
+                    <Button x:Name="AboutButton" FontFamily="Segoe MDL2 Assets" Content="&#xE897;" Width="50" Height="50" 
+                            Background="Transparent" FontSize="18" Click="AboutButton_Click" />
                     <TextBlock Text="About" FontSize="18" VerticalAlignment="Center" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <Button x:Name="AboutButton2" FontFamily="Segoe MDL2 Assets" Content="&#xE716;" Width="50" Height="50" Background="Transparent" FontSize="18" Click="AboutButton2_Click" />
+                    <Button x:Name="AboutButton2" FontFamily="Segoe MDL2 Assets" Content="&#xE716;" Width="50" Height="50" 
+                            Background="Transparent" FontSize="18" Click="AboutButton2_Click" />
                     <TextBlock Text="About2" FontSize="18" VerticalAlignment="Center" />
                 </StackPanel>
             </StackPanel>

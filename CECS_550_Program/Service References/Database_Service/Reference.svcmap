@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d21ab03a-4317-47e1-b71c-fce8b16bc645" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.ObjectModel.ObservableCollection`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>false</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://10.0.0.14/SchedngoService/SchedService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="SchedService.wsdl" MetadataType="Wsdl" ID="86b095dc-3db0-4e41-a3eb-e9a40a28fa90" SourceId="1" SourceUrl="http://10.0.0.14/SchedngoService/SchedService.svc?wsdl" />
+    <MetadataFile FileName="SchedService.xsd" MetadataType="Schema" ID="ce09e221-e6a7-4244-9c00-68a3a2565e86" SourceId="1" SourceUrl="http://10.0.0.14/SchedngoService/SchedService.svc?xsd=xsd0" />
+    <MetadataFile FileName="SchedService1.xsd" MetadataType="Schema" ID="c18af37b-734e-443b-a3c6-6f336ffb594c" SourceId="1" SourceUrl="http://10.0.0.14/SchedngoService/SchedService.svc?xsd=xsd1" />
+    <MetadataFile FileName="SchedService2.xsd" MetadataType="Schema" ID="e61f3c26-8dc9-4b6e-a2ea-a651ccdd2522" SourceId="1" SourceUrl="http://10.0.0.14/SchedngoService/SchedService.svc?xsd=xsd2" />
+    <MetadataFile FileName="SchedService3.xsd" MetadataType="Schema" ID="39cacdc1-5901-4311-a6a9-6c4d69fa829d" SourceId="1" SourceUrl="http://10.0.0.14/SchedngoService/SchedService.svc?xsd=xsd3" />
+    <MetadataFile FileName="SchedService.disco" MetadataType="Disco" ID="eb94d1b2-ae38-40a3-9dfc-a0fa7d25d2de" SourceId="1" SourceUrl="http://10.0.0.14/SchedngoService/SchedService.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -93,8 +93,36 @@
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
     <None Include="project.json" />
+    <None Include="Properties\ServiceReferences.Designer.ClientConfig" />
+    <None Include="Service References\Database_Service\CECS_550_Program.Database_Service.Contacts.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Database_Service\CECS_550_Program.Database_Service.Tasks.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Database_Service\CECS_550_Program.Database_Service.Users.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Database_Service\SchedService.wsdl" />
+    <None Include="Service References\Database_Service\SchedService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Database_Service\SchedService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Database_Service\SchedService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Database_Service\SchedService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Service References\Database_Service\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Views\Contacts_Page.xaml.cs">
       <DependentUpon>Contacts_Page.xaml</DependentUpon>
     </Compile>
@@ -193,6 +221,13 @@
     <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+    <None Include="Service References\Database_Service\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\Database_Service\configuration.svcinfo" />
+    <None Include="Service References\Database_Service\configuration91.svcinfo" />
+    <None Include="Service References\Database_Service\SchedService.disco" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -239,6 +274,12 @@
   <ItemGroup>
     <Folder Include="Controls\" />
     <Folder Include="Styles\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\Database_Service\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

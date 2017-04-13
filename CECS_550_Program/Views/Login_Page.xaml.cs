@@ -29,9 +29,43 @@ namespace CECS_550_Program
             this.InitializeComponent();
         }
 
-        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        private async void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            this.ErrorMessage.Text = Login_Page.ErrorMessageText;
+            //this.ErrorMessage.Text = Login_Page.ErrorMessageText;
+            try
+            {
+                Database_Service.SchedServiceClient client = new Database_Service.SchedServiceClient();
+                string testString = await client.LoginCheckAsync(this.EmailTextBox.Text.Trim(), this.PasswordTextBox.Password.Trim());
+                if (testString == "Login Successful")
+                {
+                    var testerString = await client.GetUserAsync(this.EmailTextBox.Text.Trim());
+                    Models.User_Account account = new Models.User_Account()
+                    {
+                        clientID = testerString.ClientID,
+                        username = testerString.UserName,
+                        avatarImage = testerString.Avatar,
+                        firstName = testerString.FirstName,
+                        lastName = testerString.LastName,
+                        phoneNumber = testerString.Phone,
+                        address = testerString.Address
+                    };
+                }
+                else
+                {
+
+                }
+            }
+            catch (Exception excep)
+            {
+                string testString;
+                testString = excep.ToString();
+                string waitString;                
+            }
+            finally
+            {
+                this.Frame.Navigate(typeof(Login_Page));
+            }
+            
         }
 
         private void RegisterButtonTextBlock_Tapped(object sender, TappedRoutedEventArgs e)

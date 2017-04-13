@@ -81,7 +81,7 @@ namespace CECS_550_Program
 
             if (result == ContentDialogResult.Primary)
             {
-                this.Frame.Navigate(typeof(Home_Page));
+                this.Frame.Navigate(typeof(Login_Page));
             }
         }
     }

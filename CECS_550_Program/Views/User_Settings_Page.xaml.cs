@@ -19,14 +19,17 @@ namespace CECS_550_Program
 {
     public sealed partial class User_Settings_Page : Page
     {
+        Models.User_Account account = new Models.User_Account();
         public User_Settings_Page()
         {
             this.InitializeComponent();
+            string testString = account.username;
         }
 
         private void ConfirmButton_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(Home_Page));
+            string testString = account.username;
         }
 
         private void EditPhotoButtonTextBlock_Tapped(object sender, TappedRoutedEventArgs e)

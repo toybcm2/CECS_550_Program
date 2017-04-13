@@ -503,7 +503,7 @@ namespace CECS_550_Program.Database_Service {
         System.Threading.Tasks.Task<CECS_550_Program.Database_Service.Users> CreateUserAsync(string FirstName, string LastName, string Phone, string Email, string Address, string UserName, string Hash);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISchedService/LoginCheck", ReplyAction="http://tempuri.org/ISchedService/LoginCheckResponse")]
-        System.Threading.Tasks.Task<CECS_550_Program.Database_Service.Users> LoginCheckAsync(string Email);
+        System.Threading.Tasks.Task<string> LoginCheckAsync(string Email, string Hash);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISchedService/AddUserToMeeting", ReplyAction="http://tempuri.org/ISchedService/AddUserToMeetingResponse")]
         System.Threading.Tasks.Task<string> AddUserToMeetingAsync(string FirstName, string LastName, int TaskID, string Email);
@@ -589,8 +589,8 @@ namespace CECS_550_Program.Database_Service {
             return base.Channel.CreateUserAsync(FirstName, LastName, Phone, Email, Address, UserName, Hash);
         }
         
-        public System.Threading.Tasks.Task<CECS_550_Program.Database_Service.Users> LoginCheckAsync(string Email) {
-            return base.Channel.LoginCheckAsync(Email);
+        public System.Threading.Tasks.Task<string> LoginCheckAsync(string Email, string Hash) {
+            return base.Channel.LoginCheckAsync(Email, Hash);
         }
         
         public System.Threading.Tasks.Task<string> AddUserToMeetingAsync(string FirstName, string LastName, int TaskID, string Email) {

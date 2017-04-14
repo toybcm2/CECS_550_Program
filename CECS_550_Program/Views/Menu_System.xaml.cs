@@ -15,6 +15,8 @@ namespace CECS_550_Program
 {
     public sealed partial class Menu_System : Page
     {
+        private Models.User_Account account = new Models.User_Account();
+
         public Menu_System()
         {
             this.InitializeComponent();
@@ -40,6 +42,17 @@ namespace CECS_550_Program
             bool viewShown = await ApplicationViewSwitcher.TryShowAsStandaloneAsync(newViewId);
         }
 
+        public void Login_User(Database_Service.Users userString)
+        {
+            account.clientID = userString.ClientID;
+            account.username = userString.UserName;
+            account.avatarImage = userString.Avatar;
+            account.firstName = userString.FirstName;
+            account.lastName = userString.LastName;
+            account.phoneNumber = userString.Phone;
+            account.address = userString.Address;
+        }
+
         private void MenuButton_Click(object sender, RoutedEventArgs e)
         {
             MainSplitView.IsPaneOpen = !MainSplitView.IsPaneOpen;
@@ -52,7 +65,7 @@ namespace CECS_550_Program
 
         private void UserButton_Click(object sender, RoutedEventArgs e)
         {
-            PageFrame.Navigate(typeof(User_Settings_Page));
+            PageFrame.Navigate(typeof(User_Settings_Page), account);
         }
 
         private void AboutButton_Click(object sender, RoutedEventArgs e)

@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.Storage;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -49,6 +50,9 @@ namespace CECS_550_Program
                         phoneNumber = testerString.Phone,
                         address = testerString.Address
                     };
+                    //Application.Current.Resources.Add(string userName, "");
+                    Menu_System menuSystem = new Menu_System();
+                    menuSystem.Login_User(testerString);
                 }
                 else
                 {
@@ -63,7 +67,7 @@ namespace CECS_550_Program
             }
             finally
             {
-                this.Frame.Navigate(typeof(Login_Page));
+                //this.Frame.Navigate(typeof(Login_Page));
             }
             
         }

@@ -19,17 +19,36 @@ namespace CECS_550_Program
 {
     public sealed partial class User_Settings_Page : Page
     {
-        Models.User_Account account = new Models.User_Account();
+        private Models.User_Account account;
         public User_Settings_Page()
         {
             this.InitializeComponent();
+        }
+
+        public void Login_User()
+        {
+            /*account = new Models.User_Account()
+            {
+                clientID = userString.ClientID,
+                username = userString.UserName,
+                avatarImage = userString.Avatar,
+                firstName = userString.FirstName,
+                lastName = userString.LastName,
+                phoneNumber = userString.Phone,
+                address = userString.Address
+            };*/
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            account = (Models.User_Account)e.Parameter;
             string testString = account.username;
+            string waitString = "test";
         }
 
         private void ConfirmButton_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(Home_Page));
-            string testString = account.username;
         }
 
         private void EditPhotoButtonTextBlock_Tapped(object sender, TappedRoutedEventArgs e)

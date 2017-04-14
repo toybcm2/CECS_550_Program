@@ -30,6 +30,10 @@ namespace CECS_550_Program
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+            Models.User_Account account = new Models.User_Account();
+            Application.Current.Resources.Add("User", account);
+
+            //var x = Application.Current.Resources.;
         }
 
         /// <summary>

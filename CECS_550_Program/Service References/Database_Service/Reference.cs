@@ -663,7 +663,7 @@ namespace CECS_550_Program.Database_Service {
         
         private static System.ServiceModel.EndpointAddress GetEndpointAddress(EndpointConfiguration endpointConfiguration) {
             if ((endpointConfiguration == EndpointConfiguration.BasicHttpBinding_ISchedService)) {
-                return new System.ServiceModel.EndpointAddress("http://10.0.0.14/SchedngoService/SchedService.svc");
+                return new System.ServiceModel.EndpointAddress("http://74.136.104.121:2121/SchedngoService/SchedService.svc");
             }
             throw new System.InvalidOperationException(string.Format("Could not find endpoint with name \'{0}\'.", endpointConfiguration));
         }

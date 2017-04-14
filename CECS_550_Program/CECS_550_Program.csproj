@@ -222,13 +222,13 @@
     <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+    <None Include="Service References\Database_Service\SchedService.disco" />
     <None Include="Service References\Database_Service\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Service References\Database_Service\configuration.svcinfo" />
     <None Include="Service References\Database_Service\configuration91.svcinfo" />
-    <None Include="Service References\Database_Service\SchedService.disco" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">

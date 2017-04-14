@@ -3,7 +3,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Imaging;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
+// Home_Page.xaml: List of events
 
 namespace CECS_550_Program
 {
@@ -21,6 +21,8 @@ namespace CECS_550_Program
             Timer.Tick += Timer_Tick;
             Timer.Interval = new TimeSpan(0, 0, 1);
             Timer.Start();
+            Database_Service.SchedServiceClient client = new Database_Service.SchedServiceClient();
+         //   client.GetMeetingInfoForUserAsync();
         }
 
         private async void Update_Weather()

@@ -42,7 +42,6 @@ namespace CECS_550_Program
                     Models.User_Account account = new Models.User_Account()
                     {
                         clientID = testerString.ClientID,
-                        username = testerString.UserName,
                         avatarImage = testerString.Avatar,
                         firstName = testerString.FirstName,
                         lastName = testerString.LastName,

@@ -1,18 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-using Windows.Storage;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -32,7 +21,6 @@ namespace CECS_550_Program
 
         private async void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            //this.ErrorMessage.Text = Login_Page.ErrorMessageText;
             try
             {
                 Database_Service.SchedServiceClient client = new Database_Service.SchedServiceClient();
@@ -50,24 +38,23 @@ namespace CECS_550_Program
                         phoneNumber = testerString.Phone,
                         address = testerString.Address
                     };
-                    //Application.Current.Resources.Add(string userName, "");
-                    Menu_System menuSystem = new Menu_System();
-                    menuSystem.Login_User(testerString);
+                    Application.Current.Resources.Add("User", account);
                 }
                 else
                 {
-
+                    this.ErrorMessage.Text = Login_Page.ErrorMessageText;
                 }
             }
             catch (Exception excep)
             {
                 string testString;
-                testString = excep.ToString();
-                string waitString;                
+                testString = excep.ToString();              
             }
             finally
             {
-                //this.Frame.Navigate(typeof(Login_Page));
+                Menu_System menu = new Menu_System();
+                menu.Login_User();
+                this.Frame.Navigate(typeof(Home_Page));
             }
             
         }

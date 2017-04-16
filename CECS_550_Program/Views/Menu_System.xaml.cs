@@ -27,6 +27,11 @@ namespace CECS_550_Program
             SystemNavigationManager.GetForCurrentView().BackRequested += OnBackRequested;
         }
 
+        public void Login_User()
+        {
+            account = (Models.User_Account)Application.Current.Resources["User"];
+        }
+
         public async void Create_New_Contact_Chat_Page()
         {
             CoreApplicationView newView = CoreApplication.CreateNewView();
@@ -42,15 +47,9 @@ namespace CECS_550_Program
             bool viewShown = await ApplicationViewSwitcher.TryShowAsStandaloneAsync(newViewId);
         }
 
-        public void Login_User(Database_Service.Users userString)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            account.clientID = userString.ClientID;
-            account.username = userString.UserName;
-            account.avatarImage = userString.Avatar;
-            account.firstName = userString.FirstName;
-            account.lastName = userString.LastName;
-            account.phoneNumber = userString.Phone;
-            account.address = userString.Address;
+
         }
 
         private void MenuButton_Click(object sender, RoutedEventArgs e)
@@ -65,7 +64,7 @@ namespace CECS_550_Program
 
         private void UserButton_Click(object sender, RoutedEventArgs e)
         {
-            PageFrame.Navigate(typeof(User_Settings_Page), account);
+            PageFrame.Navigate(typeof(User_Settings_Page));
         }
 
         private void AboutButton_Click(object sender, RoutedEventArgs e)
@@ -73,9 +72,15 @@ namespace CECS_550_Program
             PageFrame.Navigate(typeof(Event_Page));
         }
 
-        private void AboutButton2_Click(object sender, RoutedEventArgs e)
+        private void ContactsButton_Click(object sender, RoutedEventArgs e)
         {
             PageFrame.Navigate(typeof(Contacts_Page));
+        }
+
+        private void LogOutButton_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Resources.Remove("User");
+            this.DisplaySuccessDialog();
         }
 
         private void ChatWindowCallBack(IAsyncResult arg)
@@ -97,6 +102,23 @@ namespace CECS_550_Program
             {
                 e.Handled = true;
                 PageFrame.GoBack();
+            }
+        }
+
+        private async void DisplaySuccessDialog()
+        {
+            ContentDialog successDialog = new ContentDialog
+            {
+                Title = "Success",
+                Content = "You have been successfully logged out.",
+                PrimaryButtonText = "Ok"
+            };
+
+            ContentDialogResult result = await successDialog.ShowAsync();
+
+            if (result == ContentDialogResult.Primary)
+            {
+                this.Frame.Navigate(typeof(Login_Page));
             }
         }
     }

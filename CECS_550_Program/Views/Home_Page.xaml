@@ -8,62 +8,6 @@
     mc:Ignorable="d">
 
     <Grid Name="LayoutRoot" Background="Gray">
-        <!--<VisualStateManager.VisualStateGroups>
-            <VisualStateGroup x:Name="VisualStateGroup">
-                <VisualState x:Name="Desktop">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="720" />
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="Calendar_Panel.(Grid.Row)" Value="0" />
-                        <Setter Target="Calendar_Panel.(Grid.Column)" Value="0" />
-                        <Setter Target="Current_Day_Events_Panel.(Grid.Row)" Value="0" />
-                        <Setter Target="Current_Day_Events_Panel.(Grid.Column)" Value="1" />
-                        <Setter Target="Upcoming_Events_Panel.(Grid.Row)" Value="0" />
-                        <Setter Target="Upcoming_Events_Panel.(Grid.Column)" Value="2" />
-                        <Setter Target="Weather_Panel.(Grid.Row)" Value="1" />
-                        <Setter Target="Weather_Panel.(Grid.Column)" Value="0" />
-                        <Setter Target="Active_Meeting_Panel.(Grid.Row)" Value="1" />
-                        <Setter Target="Active_Meeting_Panel.(Grid.Column)" Value="1" />
-                        <Setter Target="Contacts_Panel.(Grid.Row)" Value="1" />
-                        <Setter Target="Contacts_Panel.(Grid.Column)" Value="2" />
-
-                        <Setter Target="Calendar_Panel.(Grid.ColumnSpan)" Value="1" />
-                        <Setter Target="Current_Day_Events_Panel.(Grid.ColumnSpan)" Value="1" />
-                        <Setter Target="Upcoming_Events_Panel.(Grid.ColumnSpan)" Value="1" />
-                        <Setter Target="Weather_Panel.(Grid.ColumnSpan)" Value="1" />
-                        <Setter Target="Active_Meeting_Panel.(Grid.ColumnSpan)" Value="1" />
-                        <Setter Target="Contacts_Panel.(Grid.ColumnSpan)" Value="1" />
-                    </VisualState.Setters>
-                </VisualState>
-                <VisualState x:Name="Mobile">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="0" />
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="Calendar_Panel.(Grid.Row)" Value="0" />
-                        <Setter Target="Calendar_Panel.(Grid.Column)" Value="0" />
-                        <Setter Target="Current_Day_Events_Panel.(Grid.Row)" Value="0" />
-                        <Setter Target="Current_Day_Events_Panel.(Grid.Column)" Value="1" />
-                        <Setter Target="Upcoming_Events_Panel.(Grid.Row)" Value="0" />
-                        <Setter Target="Upcoming_Events_Panel.(Grid.Column)" Value="2" />
-                        <Setter Target="Weather_Panel.(Grid.Row)" Value="1" />
-                        <Setter Target="Weather_Panel.(Grid.Column)" Value="0" />
-                        <Setter Target="Active_Meeting_Panel.(Grid.Row)" Value="1" />
-                        <Setter Target="Active_Meeting_Panel.(Grid.Column)" Value="1" />
-                        <Setter Target="Contacts_Panel.(Grid.Row)" Value="1" />
-                        <Setter Target="Contacts_Panel.(Grid.Column)" Value="2" />
-
-                        <Setter Target="Calendar_Panel.(Grid.ColumnSpan)" Value="1" />
-                        <Setter Target="Current_Day_Events_Panel.(Grid.ColumnSpan)" Value="1" />
-                        <Setter Target="Upcoming_Events_Panel.(Grid.ColumnSpan)" Value="1" />
-                        <Setter Target="Weather_Panel.(Grid.ColumnSpan)" Value="1" />
-                        <Setter Target="Active_Meeting_Panel.(Grid.ColumnSpan)" Value="1" />
-                        <Setter Target="Contacts_Panel.(Grid.ColumnSpan)" Value="1" />
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>-->
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>

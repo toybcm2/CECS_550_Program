@@ -95,6 +95,12 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\EventViewModel.cs" />
+    <Compile Include="RTC\ConnectionInformationObject.cs" />
+    <Compile Include="RTC\MyBuffer.cs" />
+    <Compile Include="RTC\RTCConnectionObject.cs" />
+    <Compile Include="RTC\RTCHandler.cs" />
+    <Compile Include="RTC\StateObject.cs" />
     <Compile Include="Views\PrivateChatMenu.xaml.cs">
       <DependentUpon>PrivateChatMenu.xaml</DependentUpon>
     </Compile>

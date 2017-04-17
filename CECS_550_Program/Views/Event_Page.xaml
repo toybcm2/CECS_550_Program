@@ -5,6 +5,7 @@
     xmlns:local="using:CECS_550_Program"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:rtdx="using:CECS_550_Program.Common"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -51,12 +52,8 @@
             <x:String>User 15</x:String>
         </ListView>
         <StackPanel x:Name="ChatArea" Grid.Row="1" Grid.Column="0">
-            <RichTextBlock x:Name="PublicChatArea" MinHeight="225">
-                <Paragraph>
-                    Hello
-                </Paragraph>
-            </RichTextBlock>
-            <TextBox x:Name="MessageArea" MinHeight="50" Text="Hello 2"></TextBox>
+            <TextBlock x:Name="ChatLog" MinHeight="225" FontSize="12" Text="{Binding Chat}" TextWrapping="Wrap"></TextBlock>
+            <TextBox x:Name="MessageArea" MinHeight="50" Text="Hello 2" KeyDown="MessageArea_KeyUp"></TextBox>
         </StackPanel>
         <TextBlock x:Name="MeetingTopics" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
             This is where the topics covered in the meeting will go.

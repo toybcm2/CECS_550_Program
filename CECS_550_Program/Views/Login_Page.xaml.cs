@@ -1,18 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-using Windows.Storage;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -32,48 +21,50 @@ namespace CECS_550_Program
 
         private async void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            //this.ErrorMessage.Text = Login_Page.ErrorMessageText;
-            try
+            Database_Service.SchedServiceClient client = new Database_Service.SchedServiceClient();
+            string testString = await client.LoginCheckAsync(this.EmailTextBox.Text.Trim(), this.PasswordTextBox.Password.Trim());
+            if (testString == "Login Successful")
             {
-                Database_Service.SchedServiceClient client = new Database_Service.SchedServiceClient();
-                string testString = await client.LoginCheckAsync(this.EmailTextBox.Text.Trim(), this.PasswordTextBox.Password.Trim());
-                if (testString == "Login Successful")
+                var testerString = await client.GetUserAsync(this.EmailTextBox.Text.Trim());
+                Models.User_Account account = new Models.User_Account()
                 {
-                    var testerString = await client.GetUserAsync(this.EmailTextBox.Text.Trim());
-                    Models.User_Account account = new Models.User_Account()
-                    {
-                        clientID = testerString.ClientID,
-                        avatarImage = testerString.Avatar,
-                        firstName = testerString.FirstName,
-                        lastName = testerString.LastName,
-                        phoneNumber = testerString.Phone,
-                        address = testerString.Address
-                    };
-                    //Application.Current.Resources.Add(string userName, "");
-                    Menu_System menuSystem = new Menu_System();
-                    menuSystem.Login_User(testerString);
-                }
-                else
-                {
-
-                }
+                    clientID = testerString.ClientID,
+                    username = testerString.UserName,
+                    avatarImage = testerString.Avatar,
+                    firstName = testerString.FirstName,
+                    lastName = testerString.LastName,
+                    phoneNumber = testerString.Phone,
+                    address = testerString.Address
+                };
+                Application.Current.Resources.Add("User", account);
+                this.DisplaySuccessDialog();
             }
-            catch (Exception excep)
+            else
             {
-                string testString;
-                testString = excep.ToString();
-                string waitString;                
-            }
-            finally
-            {
-                //this.Frame.Navigate(typeof(Login_Page));
-            }
-            
+                this.ErrorMessage.Text = Login_Page.ErrorMessageText;
+            }            
         }
 
         private void RegisterButtonTextBlock_Tapped(object sender, TappedRoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(Register_Page));
+        }
+
+        private async void DisplaySuccessDialog()
+        {
+            ContentDialog successDialog = new ContentDialog
+            {
+                Title = "Success",
+                Content = "You have been successfully logged in.",
+                PrimaryButtonText = "Ok"
+            };
+
+            ContentDialogResult result = await successDialog.ShowAsync();
+
+            if (result == ContentDialogResult.Primary)
+            {
+                this.Frame.Navigate(typeof(Home_Page));
+            }
         }
     }
 }

@@ -15,10 +15,13 @@ namespace CECS_550_Program
     {
         DispatcherTimer Timer = new DispatcherTimer();
 
-        public String item
+        public String Item
         {
-            get { return "asdf"; }
+            get { return _item; }
+            set { _item = value;
+            }
         }
+        private String _item;
 
         ObservableCollection<String> items = new ObservableCollection<String>();
 

@@ -118,6 +118,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Event.cs" />
     <Compile Include="Models\User_Account.cs" />
     <Compile Include="Service References\Database_Service\Reference.cs">
       <AutoGen>True</AutoGen>

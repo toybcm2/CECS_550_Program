@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Imaging;
+using CECS_550_Program.Common;
 
 // Home_Page.xaml: List of events
 
@@ -33,7 +34,13 @@ namespace CECS_550_Program
             Timer.Interval = new TimeSpan(0, 0, 1);
             Timer.Start();
             Database_Service.SchedServiceClient client = new Database_Service.SchedServiceClient();
-         //   client.GetMeetingInfoForUserAsync();
+            //   client.GetMeetingInfoForUserAsync();
+            Event e = new Event();
+            Models.User_Account account = Application.Current.Resources["User"] as Models.User_Account;
+            e.EventList = client.GetMeetingInfoForUserAsync(account.clientID).GetAwaiter().GetResult();
+            e.Name = "this name";
+            this.DataContext = e;
+
         }
 
         private async void Update_Weather()

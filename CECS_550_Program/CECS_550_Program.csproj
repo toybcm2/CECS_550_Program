@@ -118,6 +118,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Event.cs" />
     <Compile Include="Views\Add_Event_Page.xaml.cs">
       <DependentUpon>Add_Event_Page.xaml</DependentUpon>
     </Compile>

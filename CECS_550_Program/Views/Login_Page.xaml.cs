@@ -13,6 +13,7 @@ namespace CECS_550_Program
     public sealed partial class Login_Page : Page
     {
         const string ErrorMessageText = "Incorrect Username or Password, please try again";
+        private string s = "";
 
         public Login_Page()
         {
@@ -22,20 +23,25 @@ namespace CECS_550_Program
         private async void LoginButton_Click(object sender, RoutedEventArgs e)
         {
             Database_Service.SchedServiceClient client = new Database_Service.SchedServiceClient();
-            string testString = await client.LoginCheckAsync(this.EmailTextBox.Text.Trim(), this.PasswordTextBox.Password.Trim());
+            string testString;
+            if (s == "")
+                testString = await client.LoginCheckAsync(this.EmailTextBox.Text.Trim(), this.PasswordTextBox.Password.Trim());
+            else
+                testString = await client.LoginCheckAsync(this.EmailTextBox.Text.Trim(), s);
+
             if (testString == "Login Successful")
             {
-                var testerString = await client.GetUserAsync(this.EmailTextBox.Text.Trim());
+                var user = await client.GetUserAsync(this.EmailTextBox.Text.Trim());
                 Models.User_Account account = new Models.User_Account()
                 {
-                    clientID = testerString.ClientID,
-                    username = testerString.UserName,
-                    avatarImage = testerString.Avatar,
-                    firstName = testerString.FirstName,
-                    lastName = testerString.LastName,
-                    phoneNumber = testerString.Phone,
-                    address = testerString.Address,
-                    email = testerString.Email
+                    clientID = user.ClientID,
+                    username = user.UserName,
+                    avatarImage = user.Avatar,
+                    firstName = user.FirstName,
+                    lastName = user.LastName,
+                    phoneNumber = user.Phone,
+                    address = user.Address,
+                    email = user.Email
                 };
                 Application.Current.Resources.Add("User", account);
                 this.DisplaySuccessDialog();
@@ -65,6 +71,15 @@ namespace CECS_550_Program
             if (result == ContentDialogResult.Primary)
             {
                 this.Frame.Navigate(typeof(Home_Page));
+            }
+        }
+
+        private void PasswordTextBox_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            if (e.Key.ToString() == "Enter" && s == "")
+            {
+                s = this.PasswordTextBox.Password.Trim();
+                LoginButton_Click(this, new RoutedEventArgs());
             }
         }
     }

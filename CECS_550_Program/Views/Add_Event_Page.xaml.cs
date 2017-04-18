@@ -43,7 +43,7 @@ namespace CECS_550_Program
             string test = this.DateSelection.Date.Date.ToString();
             if (radioSelection.Equals("Meeting"))
                 meetingId = GenerateKey();
-            client.InsertTaskAsync(account.clientID, radioSelection, this.DateSelection.Date.Date, this.AddressTextBox.Text.Trim(), this.EventNameTextBox.Text.Trim(), meetingId, null);
+            client.InsertTaskAsync(account.clientID, radioSelection, this.DateSelection.Date.Date, this.AddressTextBox.Text.Trim(), this.EventNameTextBox.Text.Trim(), meetingId, this.TopicsTextBox.Text.Trim());
             this.DisplaySuccessDialog();
         }
 

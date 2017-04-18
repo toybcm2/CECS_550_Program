@@ -37,7 +37,7 @@
             <DatePicker x:Name="User_Date_Picker" Grid.RowSpan="1" Grid.ColumnSpan="3" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></DatePicker>
             
             <Grid x:Name="Current_Day_Events_Panel" Grid.RowSpan="1" Grid.ColumnSpan="3" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                <ListView x:Name="TodaysEvents" ItemsSource="{Binding EventList}" SelectionChanged="View_Meeting_Changed">
+                <ListView x:Name="TodaysEvents" ItemsSource="{Binding EventList}" SelectionChanged="TodaysEvents_SelectionChanged">
                     <ListView.ItemTemplate >
                         <DataTemplate x:DataType="x:String">
                             <TextBlock x:Name="Test" Text="{Binding TaskName}" Foreground="Black" FontSize="36" HorizontalAlignment="Right"/>
@@ -49,5 +49,34 @@
             <Button x:Name="Remove_Events_Button" Content="Remove" Background="Gray" Foreground="White" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Remove_Events_Button_Click"/>
             <Button x:Name="Other_Events_Button" Content="Other" Background="Gray" Foreground="White" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Other_Events_Button_Click"/>
         </Grid>
+        <ContentDialog x:Name="EventContentDialog" PrimaryButtonText="Join" IsPrimaryButtonEnabled="False" SecondaryButtonText="Cancel" Opened="EventContentDialog_Opened">
+            <ContentDialog.TitleTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="ms-appx:///Assets/SmallLogo.png" Width="40" Height="40" Margin="10,0"/>
+                        <TextBlock Text="Event Details"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ContentDialog.TitleTemplate>
+            <StackPanel>
+                <TextBlock x:Name="EventNameBlock" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
+                <TextBlock x:Name="AddressBlock" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
+                <TextBlock x:Name="EventTimeBlock" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
+                <CheckBox x:Name="ConfirmJoinCheckBox" Content="Are you sure you want to join event?" Checked="ConfirmJoinCheckBox_Checked" Unchecked="ConfirmJoinCheckBox_Unchecked"/>
+            </StackPanel>
+        </ContentDialog>
+        <ContentDialog x:Name="HiddenEventContentDialog" PrimaryButtonText="Secret">
+            <ContentDialog.TitleTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="ms-appx:///Assets/SmallLogo.png" Width="40" Height="40" Margin="10,0"/>
+                        <TextBlock Text="Hidden Details"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ContentDialog.TitleTemplate>
+            <StackPanel>
+                <TextBlock x:Name="HiddenMessage" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+            </StackPanel>
+        </ContentDialog>
     </Grid>
 </Page>

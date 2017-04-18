@@ -23,6 +23,7 @@ namespace CECS_550_Program
     public sealed partial class Add_Event_Page : Page
     {
         private Models.User_Account account = new Models.User_Account();
+        private string radioSelection;
 
         public Add_Event_Page()
         {
@@ -37,7 +38,8 @@ namespace CECS_550_Program
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             Database_Service.SchedServiceClient client = new Database_Service.SchedServiceClient();
-            client.InsertTaskAsync(account.clientID, this.DetailsTextBox.Text.Trim(), this.DateSelection.Date.Date, this.AddressTextBox.Text.Trim(), this.EventNameTextBox.Text.Trim());
+            string test = this.DateSelection.Date.Date.ToString();
+            client.InsertTaskAsync(account.clientID, radioSelection, this.DateSelection.Date.Date, this.AddressTextBox.Text.Trim(), this.EventNameTextBox.Text.Trim());
             this.DisplaySuccessDialog();
         }
 
@@ -56,6 +58,12 @@ namespace CECS_550_Program
             {
                 this.Frame.Navigate(typeof(Home_Page));
             }
+        }
+
+        private void Choice_Checked(object sender, RoutedEventArgs e)
+        {
+            RadioButton rb = sender as RadioButton;
+            radioSelection = rb.Content.ToString();
         }
     }
 }

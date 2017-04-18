@@ -79,5 +79,10 @@ namespace CECS_550_Program
         {
 
         }
+
+        private void View_Meeting_Changed(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

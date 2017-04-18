@@ -35,7 +35,7 @@
             </StackPanel>
             <DatePicker x:Name="User_Date_Picker" Grid.RowSpan="1" Grid.ColumnSpan="3" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></DatePicker>
             <Grid x:Name="Current_Day_Events_Panel" Grid.RowSpan="1" Grid.ColumnSpan="3" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                <ListView x:Name="TodaysEvents" ItemsSource="{Binding EventList}">
+                <ListView x:Name="TodaysEvents" ItemsSource="{Binding EventList}" SelectionChanged="View_Meeting_Changed">
                     <ListView.ItemTemplate >
                         <DataTemplate x:DataType="x:String">
                             <TextBlock x:Name="Test" Text="{Binding TaskName}" Foreground="Black" FontSize="36" HorizontalAlignment="Right"/>

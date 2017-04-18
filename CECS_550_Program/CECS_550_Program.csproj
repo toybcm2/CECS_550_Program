@@ -118,6 +118,12 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\EventViewModel.cs" />
+    <Compile Include="RTC\ConnectionInformationObject.cs" />
+    <Compile Include="RTC\MyBuffer.cs" />
+    <Compile Include="RTC\RTCConnectionObject.cs" />
+    <Compile Include="RTC\RTCHandler.cs" />
+    <Compile Include="RTC\StateObject.cs" />
     <Compile Include="Models\User_Account.cs" />
     <Compile Include="Service References\Database_Service\Reference.cs">
       <AutoGen>True</AutoGen>

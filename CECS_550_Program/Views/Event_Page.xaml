@@ -5,6 +5,7 @@
     xmlns:local="using:CECS_550_Program"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:rtdx="using:CECS_550_Program.Common"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -65,15 +66,8 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <RichTextBlock x:Name="PublicChatArea" MinHeight="137" Grid.Row="0">
-                        <Paragraph>
-                            Hello - Chat messages go here
-                        </Paragraph>
-                        <Paragraph>
-                            Here's another message
-                        </Paragraph>
-                    </RichTextBlock>
-                    <TextBox x:Name="MessageArea" MinHeight="50" Text="Enter your message here..." Grid.Row="1"></TextBox>
+                    <TextBlock x:Name="ChatLog" MinHeight="225" FontSize="12" Text="{Binding Chat}" TextWrapping="Wrap"></TextBlock>
+                    <TextBox x:Name="MessageArea" MinHeight="50" Text="Enter your message here..." Grid.Row="1" KeyDown="MessageArea_KeyUp"></TextBox>
                 </Grid>
             </ScrollViewer>
         </StackPanel>

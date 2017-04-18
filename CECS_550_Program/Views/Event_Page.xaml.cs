@@ -20,12 +20,10 @@ using CECS_550_Program.RTC;
 
 namespace CECS_550_Program
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class Event_Page : Page
     {
         private MediaPlayer _mediaPlayer;
+        private Models.User_Account account = new Models.User_Account();
         RTCHandler rtc = new RTCHandler(new RTCConnectionObject());
 
         public Event_Page()
@@ -34,6 +32,7 @@ namespace CECS_550_Program
             System.Uri manifestUri = new Uri("http://amssamples.streaming.mediaservices.windows.net/49b57c87-f5f3-48b3-ba22-c55cfdffa9cb/Sintel.ism/manifest(format=m3u8-aapl)");
             _mediaPlayer = new MediaPlayer();
             _mediaPlayer.Source = MediaSource.CreateFromUri(manifestUri);
+            account = Application.Current.Resources["User"] as Models.User_Account;
             //_mediaPlayer.Play();
 
             this.DataContext = new EventViewModel();
@@ -41,7 +40,7 @@ namespace CECS_550_Program
                 string connecting;
                 try
                 {
-                    UpdateChat(connecting = await rtc.ConnectAsync(null, new ConnectionInformationObject("General", "toybcm@gmail.com", false)));
+                    UpdateChat(connecting = await rtc.ConnectAsync(null, new ConnectionInformationObject("General", account.username, false)));
                 }
                 catch (Exception e)
                 { }

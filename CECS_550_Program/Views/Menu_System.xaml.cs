@@ -83,7 +83,7 @@ namespace CECS_550_Program
         {
             if (Application.Current.Resources.ContainsKey("User"))
             {
-                PageFrame.Navigate(typeof(About_Page));
+                PageFrame.Navigate(typeof(Event_Page));
             }
             else
             {
@@ -105,8 +105,15 @@ namespace CECS_550_Program
 
         private void LogOutButton_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Resources.Remove("User");
-            this.DisplaySuccessDialog();
+            if (Application.Current.Resources.ContainsKey("User"))
+            {
+                Application.Current.Resources.Remove("User");
+                this.DisplaySuccessDialog();
+            }
+            else
+            {
+                PageFrame.Navigate(typeof(Login_Page));
+            }
         }
 
         private void ChatWindowCallBack(IAsyncResult arg)
@@ -144,7 +151,7 @@ namespace CECS_550_Program
 
             if (result == ContentDialogResult.Primary)
             {
-                this.Frame.Navigate(typeof(Login_Page));
+                PageFrame.Navigate(typeof(Login_Page));
             }
         }
     }

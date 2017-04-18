@@ -118,7 +118,15 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Event.cs" />
+    <Compile Include="Views\Add_Event_Page.xaml.cs">
+      <DependentUpon>Add_Event_Page.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\EventViewModel.cs" />
+    <Compile Include="RTC\ConnectionInformationObject.cs" />
+    <Compile Include="RTC\MyBuffer.cs" />
+    <Compile Include="RTC\RTCConnectionObject.cs" />
+    <Compile Include="RTC\RTCHandler.cs" />
+    <Compile Include="RTC\StateObject.cs" />
     <Compile Include="Models\User_Account.cs" />
     <Compile Include="Service References\Database_Service\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -236,6 +244,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Views\Add_Event_Page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Contacts_Page.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

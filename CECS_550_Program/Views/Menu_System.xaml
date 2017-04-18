@@ -25,7 +25,7 @@
                 <StackPanel Orientation="Horizontal">
                     <Button x:Name="ContactsButton" FontFamily="Segoe MDL2 Assets" Content="&#xE716;" Width="50" Height="50" 
                             Background="Transparent" FontSize="18" Click="ContactsButton_Click" />
-                    <TextBlock Text="About2" FontSize="18" VerticalAlignment="Center" />
+                    <TextBlock Text="Contacts" FontSize="18" VerticalAlignment="Center" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Button x:Name="AboutButton" FontFamily="Segoe MDL2 Assets" Content="&#xE897;" Width="50" Height="50" 

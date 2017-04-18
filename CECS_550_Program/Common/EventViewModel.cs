@@ -44,7 +44,11 @@ namespace CECS_550_Program.Common
         public ObservableCollection<Database_Service.Tasks> EventList
         {
             get { return events; }
-            set { events = value; }
+            set
+            {
+                events = value;
+                NotifyPropertyChanged("EventList");
+            }
         }
 
     }

@@ -12,8 +12,8 @@ namespace CECS_550_Program.RTC
     {
         private EndpointPair ep;
         //private string server = "rtc.bcmart03.dynu.net";
-        private string host = "10.0.0.7";
-        //private string host = "74.136.104.121";
+        //private string host = "10.0.0.7";
+        private string host = "74.136.104.121";
         private string port = "8888";
         public RTCConnectionObject()
         {

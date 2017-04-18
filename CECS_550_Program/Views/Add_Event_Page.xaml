@@ -1,0 +1,33 @@
+﻿<Page
+    x:Class="CECS_550_Program.Add_Event_Page"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CECS_550_Program"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid x:Name="UserSettingsLayoutRoot" Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+            <!--<RowDefinition Height="*"/> We don't need this, it makes the Button expand to fill a ton of unnecessary space -->
+        </Grid.RowDefinitions>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                <TextBlock Text="Add Event" Margin="10,10,10,10" TextWrapping="Wrap" Width="300" TextAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
+                <TextBlock Text="Event Name" Margin="0,0,0,0" TextWrapping="Wrap" Width="300" TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+                <TextBox x:Name="EventNameTextBox" TextAlignment="Center" Width="290"/>
+                <TextBlock Text="Address" Margin="0,0,0,0" TextWrapping="Wrap" Width="300" TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+                <TextBox x:Name="AddressTextBox" TextAlignment="Center" Width="290"/>
+                <TextBlock Text="Details" Margin="0,0,0,0" TextWrapping="Wrap" Width="300" TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+                <TextBox x:Name="DetailsTextBox" TextWrapping="Wrap" AcceptsReturn="True" Width="290" Height="100"/>
+                <TextBlock Text="Date" Margin="0,0,0,0" TextWrapping="Wrap" Width="300" TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+                <DatePicker x:Name="DateSelection" Margin="0,0,0,0" Width="290" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Text="Time" Margin="0,0,0,0" TextWrapping="Wrap" Width="300" TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+                <TimePicker x:Name="TimeSelection" Margin="0,0,0,0" Width="295" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Button x:Name="AddButton" Content="Add" Background="Gray" Foreground="White" Click="AddButton_Click" Width="80" HorizontalAlignment="Center" Margin="0,20"/>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

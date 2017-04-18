@@ -41,7 +41,7 @@
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="auto"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock x:Name="Test" Text="{x:Bind item}" Foreground="Black" FontSize="36" HorizontalAlignment="Right"/>
+                                    <!--<TextBlock x:Name="Test" Text="{x:Bind}" Foreground="Black" FontSize="36" HorizontalAlignment="Right"/>-->
                                 </Grid>
                             </DataTemplate>
                         </ListView.ItemTemplate>

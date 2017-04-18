@@ -51,14 +51,14 @@ namespace CECS_550_Program
 
         private void Add_Events_Button_Click(object sender, RoutedEventArgs e)
         {
-            ObservableCollection<String> items = new ObservableCollection<string>();
+            /*ObservableCollection<String> items = new ObservableCollection<string>();
             for (int i = 0; i < 5; i++)
             {
                 char[] chars = {'a','b','c'};
                 items.Add(new String(chars));
             }
-            DataContext = items;
-
+            DataContext = items;*/
+            this.Frame.Navigate(typeof(Add_Event_Page));
         }
 
         private void Remove_Events_Button_Click(object sender, RoutedEventArgs e)

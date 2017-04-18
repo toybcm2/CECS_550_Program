@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Imaging;
@@ -13,6 +14,13 @@ namespace CECS_550_Program
     public sealed partial class Home_Page : Page
     {
         DispatcherTimer Timer = new DispatcherTimer();
+
+        public String item
+        {
+            get { return "asdf"; }
+        }
+
+        ObservableCollection<String> items = new ObservableCollection<String>();
 
         public Home_Page()
         {
@@ -43,6 +51,13 @@ namespace CECS_550_Program
 
         private void Add_Events_Button_Click(object sender, RoutedEventArgs e)
         {
+            ObservableCollection<String> items = new ObservableCollection<string>();
+            for (int i = 0; i < 5; i++)
+            {
+                char[] chars = {'a','b','c'};
+                items.Add(new String(chars));
+            }
+            DataContext = items;
 
         }
 

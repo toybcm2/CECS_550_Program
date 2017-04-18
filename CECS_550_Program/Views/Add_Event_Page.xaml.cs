@@ -72,11 +72,10 @@ namespace CECS_550_Program
 
         private string GenerateKey()
         {
-            int Size = 20;
             string input = "abcdefghijklmnopqrstuvwxyz0123456789";
             StringBuilder builder = new StringBuilder();
             char ch;
-            for (int i = 0; i < Size; i++)
+            for (int i = 0; i < 20; i++)
             {
                 ch = input[new Random(DateTime.UtcNow.Millisecond).Next(0, input.Length)];
                 builder.Append(ch);

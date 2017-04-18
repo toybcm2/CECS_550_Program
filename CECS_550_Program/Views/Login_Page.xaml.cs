@@ -34,7 +34,8 @@ namespace CECS_550_Program
                     firstName = testerString.FirstName,
                     lastName = testerString.LastName,
                     phoneNumber = testerString.Phone,
-                    address = testerString.Address
+                    address = testerString.Address,
+                    email = testerString.Email
                 };
                 Application.Current.Resources.Add("User", account);
                 this.DisplaySuccessDialog();

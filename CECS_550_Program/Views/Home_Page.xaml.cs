@@ -34,12 +34,10 @@ namespace CECS_550_Program
             Timer.Interval = new TimeSpan(0, 0, 1);
             Timer.Start();
             Database_Service.SchedServiceClient client = new Database_Service.SchedServiceClient();
-            //   client.GetMeetingInfoForUserAsync();
             EventViewModel model = new EventViewModel();
             Models.User_Account account = Application.Current.Resources["User"] as Models.User_Account;
             model.EventList = client.GetMeetingInfoForUserAsync(account.clientID).GetAwaiter().GetResult();
             this.DataContext = model;
-
         }
 
         private async void Update_Weather()

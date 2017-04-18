@@ -10,11 +10,8 @@ namespace CECS_550_Program.RTC
 {
     class RTCHandler
     {
-        private int sentCommand = 0;
-        private string name;
         private Guid Id;
         private Guid roomId;
-        private int _bufferSize = 1024;
         private StreamSocket clientSocket = new StreamSocket();
         private EndpointPair ep;
         private bool endpointSet = false;

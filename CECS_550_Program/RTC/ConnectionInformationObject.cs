@@ -9,15 +9,16 @@ namespace CECS_550_Program.RTC
     class ConnectionInformationObject
     {
         private string userID;
-        private string userAlias = "default";
+        private string userAlias;
         private string chatID;
         private bool admin;
 
-        public ConnectionInformationObject(string chatID, string userID = null, bool admin = false)
+        public ConnectionInformationObject(string chatID, string userID = null, string alias = null, bool admin = false)
         {
             this.userID = userID;
             this.chatID = chatID;
             this.admin = admin;
+            this.userAlias = alias;
         }
 
         public string UserID

@@ -49,5 +49,11 @@ namespace CECS_550_Program.Models
             get;
             set;
         }
+
+        public string email
+        {
+            get;
+            set;
+        }
     }
 }

@@ -27,6 +27,7 @@
   <xs:complexType name="Tasks">
     <xs:sequence>
       <xs:element minOccurs="0" name="Cancelled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ChatID" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Error" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="OrganizerFirstName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="OrganizerID" type="xs:int" />
@@ -35,6 +36,7 @@
       <xs:element minOccurs="0" name="TaskID" type="xs:int" />
       <xs:element minOccurs="0" name="TaskName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="TaskTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Topic" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="TypeID" type="xs:int" />
       <xs:element minOccurs="0" name="TypeName" nillable="true" type="xs:string" />
     </xs:sequence>

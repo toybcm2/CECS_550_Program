@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Text;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -24,6 +25,7 @@ namespace CECS_550_Program
     {
         private Models.User_Account account = new Models.User_Account();
         private string radioSelection;
+        private string meetingId = null;
 
         public Add_Event_Page()
         {
@@ -39,7 +41,9 @@ namespace CECS_550_Program
         {
             Database_Service.SchedServiceClient client = new Database_Service.SchedServiceClient();
             string test = this.DateSelection.Date.Date.ToString();
-            client.InsertTaskAsync(account.clientID, radioSelection, this.DateSelection.Date.Date, this.AddressTextBox.Text.Trim(), this.EventNameTextBox.Text.Trim());
+            if (radioSelection.Equals("Meeting"))
+                meetingId = GenerateKey();
+            client.InsertTaskAsync(account.clientID, radioSelection, this.DateSelection.Date.Date, this.AddressTextBox.Text.Trim(), this.EventNameTextBox.Text.Trim(), meetingId, null);
             this.DisplaySuccessDialog();
         }
 
@@ -64,6 +68,20 @@ namespace CECS_550_Program
         {
             RadioButton rb = sender as RadioButton;
             radioSelection = rb.Content.ToString();
+        }
+
+        private string GenerateKey()
+        {
+            int Size = 20;
+            string input = "abcdefghijklmnopqrstuvwxyz0123456789";
+            StringBuilder builder = new StringBuilder();
+            char ch;
+            for (int i = 0; i < Size; i++)
+            {
+                ch = input[new Random(DateTime.UtcNow.Millisecond).Next(0, input.Length)];
+                builder.Append(ch);
+            }
+            return builder.ToString();
         }
     }
 }

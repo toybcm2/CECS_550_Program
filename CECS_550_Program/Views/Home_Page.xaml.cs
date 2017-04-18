@@ -35,11 +35,10 @@ namespace CECS_550_Program
             Timer.Start();
             Database_Service.SchedServiceClient client = new Database_Service.SchedServiceClient();
             //   client.GetMeetingInfoForUserAsync();
-            Event e = new Event();
+            EventViewModel model = new EventViewModel();
             Models.User_Account account = Application.Current.Resources["User"] as Models.User_Account;
-            e.EventList = client.GetMeetingInfoForUserAsync(account.clientID).GetAwaiter().GetResult();
-            e.Name = "this name";
-            this.DataContext = e;
+            model.EventList = client.GetMeetingInfoForUserAsync(account.clientID).GetAwaiter().GetResult();
+            this.DataContext = model;
 
         }
 

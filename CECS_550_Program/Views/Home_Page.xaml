@@ -42,8 +42,14 @@
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="auto"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock x:Name="Test" Text="{Binding Name}" Foreground="Black" FontSize="36" HorizontalAlignment="Right"/>
-                                </Grid>
+                                <ItemsControl ItemsSource="{Binding EventList}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock x:Name="Test" Text="{Binding Name}" Foreground="Black" FontSize="36" HorizontalAlignment="Right"/>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </Grid>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                         <ListView.ItemContainerStyle>

@@ -322,6 +322,8 @@ namespace CECS_550_Program.Database_Service {
         
         private bool CancelledField;
         
+        private string ChatIDField;
+        
         private string ErrorField;
         
         private string OrganizerFirstNameField;
@@ -338,6 +340,8 @@ namespace CECS_550_Program.Database_Service {
         
         private System.DateTime TaskTimeField;
         
+        private string TopicField;
+        
         private int TypeIDField;
         
         private string TypeNameField;
@@ -351,6 +355,19 @@ namespace CECS_550_Program.Database_Service {
                 if ((this.CancelledField.Equals(value) != true)) {
                     this.CancelledField = value;
                     this.RaisePropertyChanged("Cancelled");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ChatID {
+            get {
+                return this.ChatIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ChatIDField, value) != true)) {
+                    this.ChatIDField = value;
+                    this.RaisePropertyChanged("ChatID");
                 }
             }
         }
@@ -460,6 +477,19 @@ namespace CECS_550_Program.Database_Service {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Topic {
+            get {
+                return this.TopicField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TopicField, value) != true)) {
+                    this.TopicField = value;
+                    this.RaisePropertyChanged("Topic");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public int TypeID {
             get {
                 return this.TypeIDField;
@@ -530,7 +560,7 @@ namespace CECS_550_Program.Database_Service {
         System.Threading.Tasks.Task<string> InsertContactAsync(int ClientID, string FirstName, string LastName, string Phone, string Email, string Address);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISchedService/InsertTask", ReplyAction="http://tempuri.org/ISchedService/InsertTaskResponse")]
-        System.Threading.Tasks.Task<string> InsertTaskAsync(int ClientID, string TypeName, System.DateTime Time, string Address, string TaskName);
+        System.Threading.Tasks.Task<string> InsertTaskAsync(int ClientID, string TypeName, System.DateTime Time, string Address, string TaskName, string ChatID, string Topic);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISchedService/RemoveUserFromMeeting", ReplyAction="http://tempuri.org/ISchedService/RemoveUserFromMeetingResponse")]
         System.Threading.Tasks.Task<string> RemoveUserFromMeetingAsync(int MeetingID, int ClientID);
@@ -625,8 +655,8 @@ namespace CECS_550_Program.Database_Service {
             return base.Channel.InsertContactAsync(ClientID, FirstName, LastName, Phone, Email, Address);
         }
         
-        public System.Threading.Tasks.Task<string> InsertTaskAsync(int ClientID, string TypeName, System.DateTime Time, string Address, string TaskName) {
-            return base.Channel.InsertTaskAsync(ClientID, TypeName, Time, Address, TaskName);
+        public System.Threading.Tasks.Task<string> InsertTaskAsync(int ClientID, string TypeName, System.DateTime Time, string Address, string TaskName, string ChatID, string Topic) {
+            return base.Channel.InsertTaskAsync(ClientID, TypeName, Time, Address, TaskName, ChatID, Topic);
         }
         
         public System.Threading.Tasks.Task<string> RemoveUserFromMeetingAsync(int MeetingID, int ClientID) {

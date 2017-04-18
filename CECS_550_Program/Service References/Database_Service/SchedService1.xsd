@@ -165,6 +165,8 @@
         <xs:element minOccurs="0" name="Time" type="xs:dateTime" />
         <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="TaskName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ChatID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Topic" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

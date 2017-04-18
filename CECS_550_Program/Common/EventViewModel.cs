@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
@@ -7,6 +8,7 @@ namespace CECS_550_Program.Common
     class EventViewModel : INotifyPropertyChanged
     {
         private string chat = String.Empty;
+        private ObservableCollection<Database_Service.Tasks> events;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -23,7 +25,7 @@ namespace CECS_550_Program.Common
 
         public EventViewModel()
         {
-            Chat = "testing";
+            Chat = "";
         }
 
         public string Chat
@@ -37,6 +39,12 @@ namespace CECS_550_Program.Common
                 this.chat = value;
                 NotifyPropertyChanged("Chat");
             }
+        }
+
+        public ObservableCollection<Database_Service.Tasks> EventList
+        {
+            get { return events; }
+            set { events = value; }
         }
 
     }

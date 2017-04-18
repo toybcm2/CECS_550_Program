@@ -18,7 +18,15 @@
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
         <MediaPlayerElement x:Name="mediaPlayerElement" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" AreTransportControlsEnabled="True"/>
+        <!-- A ScrollViewer can only have one child element - if we want multiple elements inside it, we must 
+             wrap them inside a single element like a Grid or StackPanel. -->
         <ListView x:Name="UpcomingSpeaker" Grid.Row="0" Grid.Column="1">
+            <!--<x:String>1234567891011121314151617181920</x:String> This only begins to display at the number 11. -->
+            
+            <!-- The reason the usernames don't show up is they're hidden by other elements in the page: MediaPlayerElement, probably.
+                 We'll possibly need to modify the Grid for this page's layout and place the user list in the first row, second column,
+                 unless there's something easier we can do. -->
+            
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="x:String">
                     <Grid>
@@ -52,10 +60,20 @@
             <x:String>User 15</x:String>
         </ListView>
         <StackPanel x:Name="ChatArea" Grid.Row="1" Grid.Column="0">
-            <TextBlock x:Name="ChatLog" MinHeight="225" FontSize="12" Text="{Binding Chat}" TextWrapping="Wrap"></TextBlock>
-            <TextBox x:Name="MessageArea" MinHeight="50" Text="Hello 2" KeyDown="MessageArea_KeyUp"></TextBox>
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock x:Name="ChatLog" MinHeight="225" FontSize="12" Text="{Binding Chat}" TextWrapping="Wrap"></TextBlock>
+                    <TextBox x:Name="MessageArea" MinHeight="50" Text="Enter your message here..." Grid.Row="1" KeyDown="MessageArea_KeyUp"></TextBox>
+                </Grid>
+            </ScrollViewer>
         </StackPanel>
-        <TextBlock x:Name="MeetingTopics" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <!-- Set TextWrapping="Wrap" in order to make this TextBlock use word wrap. -->
+        <TextBlock x:Name="MeetingTopics" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" 
+                   VerticalAlignment="Center" TextWrapping="Wrap">
             This is where the topics covered in the meeting will go.
         </TextBlock>
     </Grid>

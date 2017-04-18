@@ -55,7 +55,7 @@ namespace CECS_550_Program
         [DataMember]
         public double pressure { get; set; }
         [DataMember]
-        public int humidity { get; set; }
+        public double humidity { get; set; }
         [DataMember]
         public double temp_min { get; set; }
         [DataMember]
@@ -79,7 +79,7 @@ namespace CECS_550_Program
     public class Clouds
     {
         [DataMember]
-        public int all { get; set; }
+        public double all { get; set; }
     }
 
     [DataContract]
@@ -90,9 +90,9 @@ namespace CECS_550_Program
         [DataMember]
         public string country { get; set; }
         [DataMember]
-        public int sunrise { get; set; }
+        public double sunrise { get; set; }
         [DataMember]
-        public int sunset { get; set; }
+        public double sunset { get; set; }
     }
 
     [DataContract]
@@ -111,14 +111,14 @@ namespace CECS_550_Program
         [DataMember]
         public Clouds clouds { get; set; }
         [DataMember]
-        public int dt { get; set; }
+        public double dt { get; set; }
         [DataMember]
         public Sys sys { get; set; }
         [DataMember]
-        public int id { get; set; }
+        public double id { get; set; }
         [DataMember]
         public string name { get; set; }
         [DataMember]
-        public int cod { get; set; }
+        public double cod { get; set; }
     }
 }

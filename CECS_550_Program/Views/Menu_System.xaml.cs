@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Threading.Tasks;
 using Windows.ApplicationModel.Core;
 using Windows.Foundation;
-using Windows.System.Threading;
 using Windows.UI.Core;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
@@ -13,42 +11,26 @@ using Windows.UI.Xaml.Navigation;
 
 namespace CECS_550_Program
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class Menu_System : Page
     {
+        private Models.User_Account account = new Models.User_Account();
+
         public Menu_System()
         {
             this.InitializeComponent();
-            ApplicationView.PreferredLaunchViewSize = new Size(600, 600);
+            ApplicationView.PreferredLaunchViewSize = new Size(450, 500);
             ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
             PageFrame.Navigate(typeof(Login_Page));
             PageFrame.Navigated += PageFrame_Navigated;
             SystemNavigationManager.GetForCurrentView().BackRequested += OnBackRequested;
         }
 
-        private void MenuButton_Click(object sender, RoutedEventArgs e)
+        public void Login_User()
         {
-            MainSplitView.IsPaneOpen = !MainSplitView.IsPaneOpen;
+            account = (Models.User_Account)Application.Current.Resources["User"];
         }
 
-        private void HomeButton_Click(object sender, RoutedEventArgs e)
-        {
-            PageFrame.Navigate(typeof(Home_Page));
-        }
-
-        private void UserButton_Click(object sender, RoutedEventArgs e)
-        {
-            PageFrame.Navigate(typeof(User_Settings_Page));
-        }
-
-        private void AboutButton_Click(object sender, RoutedEventArgs e)
-        {
-            PageFrame.Navigate(typeof(Event_Page));
-        }
-
-        private async void AboutButton2_Click(object sender, RoutedEventArgs e)
+        public async void Create_New_Contact_Chat_Page()
         {
             CoreApplicationView newView = CoreApplication.CreateNewView();
             int newViewId = 0;
@@ -61,6 +43,70 @@ namespace CECS_550_Program
                 newViewId = ApplicationView.GetForCurrentView().Id;
             });
             bool viewShown = await ApplicationViewSwitcher.TryShowAsStandaloneAsync(newViewId);
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+
+        }
+
+        private void MenuButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainSplitView.IsPaneOpen = !MainSplitView.IsPaneOpen;
+        }
+
+        private void HomeButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (Application.Current.Resources.ContainsKey("User"))
+            {
+                PageFrame.Navigate(typeof(Home_Page));
+            }
+            else
+            {
+                PageFrame.Navigate(typeof(Login_Page));
+            }
+        }
+
+        private void UserButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (Application.Current.Resources.ContainsKey("User"))
+            {
+                PageFrame.Navigate(typeof(User_Settings_Page));
+            }
+            else
+            {
+                PageFrame.Navigate(typeof(Login_Page));
+            }
+        }
+
+        private void AboutButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (Application.Current.Resources.ContainsKey("User"))
+            {
+                PageFrame.Navigate(typeof(About_Page));
+            }
+            else
+            {
+                PageFrame.Navigate(typeof(Login_Page));
+            }
+        }
+
+        private void ContactsButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (Application.Current.Resources.ContainsKey("User"))
+            {
+                PageFrame.Navigate(typeof(Contacts_Page));
+            }
+            else
+            {
+                PageFrame.Navigate(typeof(Login_Page));
+            }
+        }
+
+        private void LogOutButton_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Resources.Remove("User");
+            this.DisplaySuccessDialog();
         }
 
         private void ChatWindowCallBack(IAsyncResult arg)
@@ -78,10 +124,27 @@ namespace CECS_550_Program
 
         private void OnBackRequested(object sender, BackRequestedEventArgs e)
         {
-            if (PageFrame.CanGoBack)
+            if (PageFrame.CanGoBack && Application.Current.Resources.ContainsKey("User"))
             {
                 e.Handled = true;
                 PageFrame.GoBack();
+            }
+        }
+
+        private async void DisplaySuccessDialog()
+        {
+            ContentDialog successDialog = new ContentDialog
+            {
+                Title = "Success",
+                Content = "You have been successfully logged out.",
+                PrimaryButtonText = "Ok"
+            };
+
+            ContentDialogResult result = await successDialog.ShowAsync();
+
+            if (result == ContentDialogResult.Primary)
+            {
+                this.Frame.Navigate(typeof(Login_Page));
             }
         }
     }

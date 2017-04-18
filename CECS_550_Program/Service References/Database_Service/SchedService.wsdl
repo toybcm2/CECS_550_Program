@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="SchedService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://74.136.104.121:2121/SchedngoService/SchedService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://74.136.104.121:2121/SchedngoService/SchedService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://74.136.104.121:2121/SchedngoService/SchedService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SchedngoService" />
+      <xsd:import schemaLocation="http://74.136.104.121:2121/SchedngoService/SchedService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/SchedngoService.Models" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ISchedService_CreateUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateUser" />
+  </wsdl:message>
+  <wsdl:message name="ISchedService_CreateUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISchedService_LoginCheck_InputMessage">
+    <wsdl:part name="parameters" element="tns:LoginCheck" />
+  </wsdl:message>
+  <wsdl:message name="ISchedService_LoginCheck_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoginCheckResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISchedService_AddUserToMeeting_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddUserToMeeting" />
+  </wsdl:message>
+  <wsdl:message name="ISchedService_AddUserToMeeting_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddUserToMeetingResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISchedService_CancelMeeting_InputMessage">
+    <wsdl:part name="parameters" element="tns:CancelMeeting" />
+  </wsdl:message>
+  <wsdl:message name="ISchedService_CancelMeeting_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CancelMeetingResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISchedService_GetAllUsersInvitedToMeeting_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllUsersInvitedToMeeting" />
+  </wsdl:message>
+  <wsdl:message name="ISchedService_GetAllUsersInvitedToMeeting_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllUsersInvitedToMeetingResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISchedService_GetContactInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetContactInfo" />
+  </wsdl:message>
+  <wsdl:message name="ISchedService_GetContactInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetContactInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISchedService_GetMeetingInfoForUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMeetingInfoForUser" />
+  </wsdl:message>
+  <wsdl:message name="ISchedService_GetMeetingInfoForUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMeetingInfoForUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISchedService_GetSpecificMeetingInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSpecificMeetingInfo" />
+  </wsdl:message>
+  <wsdl:message name="ISchedService_GetSpecificMeetingInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSpecificMeetingInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISchedService_GetUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUser" />
+  </wsdl:message>
+  <wsdl:message name="ISchedService_GetUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISchedService_InsertContact_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertContact" />
+  </wsdl:message>
+  <wsdl:message name="ISchedService_InsertContact_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertContactResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISchedService_InsertTask_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertTask" />
+  </wsdl:message>
+  <wsdl:message name="ISchedService_InsertTask_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertTaskResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISchedService_RemoveUserFromMeeting_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveUserFromMeeting" />
+  </wsdl:message>
+  <wsdl:message name="ISchedService_RemoveUserFromMeeting_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveUserFromMeetingResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISchedService_UpdateUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUser" />
+  </wsdl:message>
+  <wsdl:message name="ISchedService_UpdateUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISchedService_UpdatePassword_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePassword" />
+  </wsdl:message>
+  <wsdl:message name="ISchedService_UpdatePassword_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePasswordResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ISchedService">
+    <wsdl:operation name="CreateUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISchedService/CreateUser" message="tns:ISchedService_CreateUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISchedService/CreateUserResponse" message="tns:ISchedService_CreateUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LoginCheck">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISchedService/LoginCheck" message="tns:ISchedService_LoginCheck_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISchedService/LoginCheckResponse" message="tns:ISchedService_LoginCheck_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUserToMeeting">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISchedService/AddUserToMeeting" message="tns:ISchedService_AddUserToMeeting_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISchedService/AddUserToMeetingResponse" message="tns:ISchedService_AddUserToMeeting_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelMeeting">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISchedService/CancelMeeting" message="tns:ISchedService_CancelMeeting_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISchedService/CancelMeetingResponse" message="tns:ISchedService_CancelMeeting_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUsersInvitedToMeeting">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISchedService/GetAllUsersInvitedToMeeting" message="tns:ISchedService_GetAllUsersInvitedToMeeting_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISchedService/GetAllUsersInvitedToMeetingResponse" message="tns:ISchedService_GetAllUsersInvitedToMeeting_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetContactInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISchedService/GetContactInfo" message="tns:ISchedService_GetContactInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISchedService/GetContactInfoResponse" message="tns:ISchedService_GetContactInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMeetingInfoForUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISchedService/GetMeetingInfoForUser" message="tns:ISchedService_GetMeetingInfoForUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISchedService/GetMeetingInfoForUserResponse" message="tns:ISchedService_GetMeetingInfoForUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSpecificMeetingInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISchedService/GetSpecificMeetingInfo" message="tns:ISchedService_GetSpecificMeetingInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISchedService/GetSpecificMeetingInfoResponse" message="tns:ISchedService_GetSpecificMeetingInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISchedService/GetUser" message="tns:ISchedService_GetUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISchedService/GetUserResponse" message="tns:ISchedService_GetUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertContact">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISchedService/InsertContact" message="tns:ISchedService_InsertContact_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISchedService/InsertContactResponse" message="tns:ISchedService_InsertContact_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertTask">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISchedService/InsertTask" message="tns:ISchedService_InsertTask_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISchedService/InsertTaskResponse" message="tns:ISchedService_InsertTask_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveUserFromMeeting">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISchedService/RemoveUserFromMeeting" message="tns:ISchedService_RemoveUserFromMeeting_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISchedService/RemoveUserFromMeetingResponse" message="tns:ISchedService_RemoveUserFromMeeting_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISchedService/UpdateUser" message="tns:ISchedService_UpdateUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISchedService/UpdateUserResponse" message="tns:ISchedService_UpdateUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePassword">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISchedService/UpdatePassword" message="tns:ISchedService_UpdatePassword_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISchedService/UpdatePasswordResponse" message="tns:ISchedService_UpdatePassword_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ISchedService" type="tns:ISchedService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreateUser">
+      <soap:operation soapAction="http://tempuri.org/ISchedService/CreateUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoginCheck">
+      <soap:operation soapAction="http://tempuri.org/ISchedService/LoginCheck" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUserToMeeting">
+      <soap:operation soapAction="http://tempuri.org/ISchedService/AddUserToMeeting" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelMeeting">
+      <soap:operation soapAction="http://tempuri.org/ISchedService/CancelMeeting" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUsersInvitedToMeeting">
+      <soap:operation soapAction="http://tempuri.org/ISchedService/GetAllUsersInvitedToMeeting" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContactInfo">
+      <soap:operation soapAction="http://tempuri.org/ISchedService/GetContactInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMeetingInfoForUser">
+      <soap:operation soapAction="http://tempuri.org/ISchedService/GetMeetingInfoForUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSpecificMeetingInfo">
+      <soap:operation soapAction="http://tempuri.org/ISchedService/GetSpecificMeetingInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUser">
+      <soap:operation soapAction="http://tempuri.org/ISchedService/GetUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertContact">
+      <soap:operation soapAction="http://tempuri.org/ISchedService/InsertContact" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertTask">
+      <soap:operation soapAction="http://tempuri.org/ISchedService/InsertTask" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveUserFromMeeting">
+      <soap:operation soapAction="http://tempuri.org/ISchedService/RemoveUserFromMeeting" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUser">
+      <soap:operation soapAction="http://tempuri.org/ISchedService/UpdateUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePassword">
+      <soap:operation soapAction="http://tempuri.org/ISchedService/UpdatePassword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SchedService">
+    <wsdl:port name="BasicHttpBinding_ISchedService" binding="tns:BasicHttpBinding_ISchedService">
+      <soap:address location="http://74.136.104.121:2121/SchedngoService/SchedService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

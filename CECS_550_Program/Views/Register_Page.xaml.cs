@@ -1,4 +1,5 @@
 ﻿using System.Text.RegularExpressions;
+using System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -6,9 +7,6 @@ using Windows.UI.Xaml.Controls;
 
 namespace CECS_550_Program
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class Register_Page : Page
     {
         public Register_Page()
@@ -30,9 +28,17 @@ namespace CECS_550_Program
             {
                 ErrorMessage.Text = "Last name is not allowed";
             }
+            else if (!Regex.IsMatch(UsernameTextBox.Text.Trim(), @"^([a-zA-Z_])([a-zA-Z0-9]*)"))
+            {
+                ErrorMessage.Text = "Username is not allowed (Must begin with letter and only letters/numbers are allowed)";
+            }
             else if (!Regex.IsMatch(EmailAddressTextBox.Text.Trim(), @"^([a-zA-Z_])([a-zA-Z0-9_\-\.]*)@(\[((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}|((([a-zA-Z0-9\-]+)\.)+))([a-zA-Z]{2,}|(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\])$"))
             {
                 ErrorMessage.Text = "Email address is not allowed";
+            }
+            else if (!Regex.IsMatch(PhoneNumberTextBox.Text.Trim(), @"^[0-9][0-9]*$"))
+            {
+                ErrorMessage.Text = "Phone number is not allowed (Must be numbers only)";
             }
             else if (PasswordTextBox.Password.Length < 6)
             {
@@ -46,6 +52,36 @@ namespace CECS_550_Program
             {
                 ErrorMessage.Text = "";
                 //Run data and create account in database
+                try
+                {
+                    Database_Service.SchedServiceClient client = new Database_Service.SchedServiceClient();
+                    client.CreateUserAsync(this.FirstNameTextBox.Text.Trim(), this.LastNameTextBox.Text.Trim(), this.PhoneNumberTextBox.Text.Trim(), this.EmailAddressTextBox.Text.Trim(), "", this.UsernameTextBox.Text.Trim(), this.PasswordTextBox.Password.Trim());
+                }
+                catch (Exception)
+                {
+
+                }
+                finally
+                {
+                    this.DisplaySuccessDialog();
+                }
+            }
+        }
+
+        private async void DisplaySuccessDialog()
+        {
+            ContentDialog successDialog = new ContentDialog
+            {
+                Title = "Success",
+                Content = "Your username has been successfully created.",
+                PrimaryButtonText = "Ok"
+            };
+
+            ContentDialogResult result = await successDialog.ShowAsync();
+
+            if (result == ContentDialogResult.Primary)
+            {
+                this.Frame.Navigate(typeof(Login_Page));
             }
         }
     }

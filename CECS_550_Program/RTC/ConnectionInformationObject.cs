@@ -10,10 +10,10 @@ namespace CECS_550_Program.RTC
     {
         private string userID;
         private string userAlias = "default";
-        private Guid chatID;
+        private string chatID;
         private bool admin;
 
-        public ConnectionInformationObject(Guid chatID, string userID = null, bool admin = false)
+        public ConnectionInformationObject(string chatID, string userID = null, bool admin = false)
         {
             this.userID = userID;
             this.chatID = chatID;
@@ -32,7 +32,7 @@ namespace CECS_550_Program.RTC
             set { this.userAlias = value; }
         }
 
-        public Guid ChatRoomID
+        public string ChatRoomID
         {
             get { return this.chatID; }
             set { this.chatID = value; }

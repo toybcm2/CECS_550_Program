@@ -37,10 +37,24 @@ namespace CECS_550_Program
             account = (Models.User_Account)Application.Current.Resources["User"];
         }
 
-        private void AddButton_Click(object sender, RoutedEventArgs e)
+        private async void AddButton_Click(object sender, RoutedEventArgs e)
         {
             Database_Service.SchedServiceClient client = new Database_Service.SchedServiceClient();
             string test = this.DateSelection.Date.Date.ToString();
+
+            if (String.IsNullOrEmpty(radioSelection))
+            {
+                ContentDialog successDialog = new ContentDialog
+                {
+                    Title = "Error",
+                    Content = "You must select what type of event this is.",
+                    PrimaryButtonText = "Ok"
+                };
+                ContentDialogResult result = await successDialog.ShowAsync();
+
+                return;
+            }
+
             if (radioSelection.Equals("Meeting"))
                 meetingId = GenerateKey();
             client.InsertTaskAsync(account.clientID, radioSelection, this.DateSelection.Date.Date, this.AddressTextBox.Text.Trim(), this.EventNameTextBox.Text.Trim(), meetingId, this.TopicsTextBox.Text.Trim());

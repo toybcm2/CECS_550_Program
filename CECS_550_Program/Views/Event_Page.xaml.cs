@@ -24,7 +24,16 @@ namespace CECS_550_Program
     {
         private MediaPlayer _mediaPlayer;
         private Models.User_Account account = new Models.User_Account();
-        RTCHandler rtc = new RTCHandler(new RTCConnectionObject());
+        private RTCHandler rtc = new RTCHandler(new RTCConnectionObject());
+        private Database_Service.SchedServiceClient client;
+        private string chatID;
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            account = (Models.User_Account)Application.Current.Resources["User"];
+            client = new Database_Service.SchedServiceClient();
+            chatID = (string)e.Parameter;
+        }
 
         public Event_Page()
         {
@@ -40,7 +49,7 @@ namespace CECS_550_Program
                 string connecting;
                 try
                 {
-                    UpdateChat(connecting = await rtc.ConnectAsync(null, new ConnectionInformationObject("General", account.email, account.username, false)));
+                    UpdateChat(connecting = await rtc.ConnectAsync(null, new ConnectionInformationObject(chatID, account.email, account.username, false)));
                 }
                 catch (Exception e)
                 { }

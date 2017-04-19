@@ -56,5 +56,10 @@ namespace CECS_550_Program
                 this.Frame.Navigate(typeof(Login_Page));
             }
         }
+
+        private void AvatarImageBox_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
+        {
+
+        }
     }
 }

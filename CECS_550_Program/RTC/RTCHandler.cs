@@ -45,7 +45,8 @@ namespace CECS_550_Program.RTC
                 await clientSocket.ConnectAsync(ep.RemoteHostName, ep.RemoteServiceName);
                 writer = new DataWriter(clientSocket.OutputStream);
                 reader = new DataReader(clientSocket.InputStream);
-
+                
+                
                 await SendCommandAsync("connect:" + connectionInfo.UserID + ":" + connectionInfo.UserAlias + ":" + connectionInfo.ChatRoomID);
                 string response = await ReadAsync();
 

@@ -1,7 +1,12 @@
-﻿using System;
+﻿using CECS_550_Program.Common;
+using System;
+using Windows.Storage;
+using Windows.Storage.Pickers;
+using Windows.Storage.Streams;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
@@ -59,7 +64,24 @@ namespace CECS_550_Program
 
         private void AvatarImageBox_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
         {
+            GetImage();
+        }
 
+        private async void GetImage()
+        {
+            FileOpenPicker picker = new FileOpenPicker();
+            picker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
+            picker.FileTypeFilter.Add(".png");
+            picker.FileTypeFilter.Add(".jpg");
+            picker.FileTypeFilter.Add(".jpeg");
+
+            StorageFile file = await picker.PickSingleFileAsync();
+
+            if(file != null)
+            {
+                ImageConverter converter = new ImageConverter();
+                byte[] imageBuffer = converter.ToByteArray(file).GetAwaiter().GetResult();
+            }
         }
     }
 }

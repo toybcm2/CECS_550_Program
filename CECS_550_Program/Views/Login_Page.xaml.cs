@@ -22,6 +22,7 @@ namespace CECS_550_Program
 
         private async void LoginButton_Click(object sender, RoutedEventArgs e)
         {
+            this.LoginButton.IsEnabled = false;
             Database_Service.SchedServiceClient client = new Database_Service.SchedServiceClient();
             string testString;
             if (s == "")
@@ -49,6 +50,7 @@ namespace CECS_550_Program
             else
             {
                 this.ErrorMessage.Text = Login_Page.ErrorMessageText;
+                this.LoginButton.IsEnabled = true;
             }            
         }
 

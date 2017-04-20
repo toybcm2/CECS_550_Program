@@ -65,9 +65,35 @@
                 </Grid>
             </ScrollViewer>
         </StackPanel>
-        <!-- Set TextWrapping="Wrap" in order to make this TextBlock use word wrap. -->
-        <TextBlock x:Name="MeetingTopics" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" 
+        <StackPanel x:Name="TopicArea" Grid.Row="1" Grid.Column="1">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock x:Name="MeetingTopics" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" 
                    VerticalAlignment="Center" TextWrapping="Wrap">
-        </TextBlock>
+                    </TextBlock>
+                    <Button x:Name="RequestAddToQueueButton" Content="Join Queue" Background="Gray" Foreground="White" Click="RequestAddToQueueButton_Click" 
+                    Width="120" HorizontalAlignment="Center" Margin="0,20"/>
+                </Grid>
+            </ScrollViewer>
+        </StackPanel>
+        <ContentDialog x:Name="AdminDialog" PrimaryButtonText="Allow" IsPrimaryButtonEnabled="False" SecondaryButtonText="Deny" Opened="AdminDialog_Opened">
+            <ContentDialog.TitleTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="ms-appx:///Assets/SmallLogo.png" Width="40" Height="40" Margin="10,0"/>
+                        <TextBlock Text="Add User to Queue Details"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ContentDialog.TitleTemplate>
+            <StackPanel>
+                <TextBlock x:Name="UserNameBlock" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
+                <CheckBox x:Name="ConfirmJoinCheckBox" Content="Are you sure you want this user to join this event?" Checked="ConfirmJoinCheckBox_Checked" Unchecked="ConfirmJoinCheckBox_Unchecked"/>
+            </StackPanel>
+        </ContentDialog>
+        <!-- Set TextWrapping="Wrap" in order to make this TextBlock use word wrap. -->
     </Grid>
 </Page>

@@ -63,6 +63,10 @@ namespace CECS_550_Program
 
         private void Remove_Events_Button_Click(object sender, RoutedEventArgs e)
         {
+            this.Frame.Navigate(typeof(Delete_Event_Page));
+
+          //  var x = DataContext as EventViewModel;
+            // access specific event by taskID
 
         }
 

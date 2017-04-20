@@ -138,6 +138,9 @@
     <Compile Include="Views\Contacts_Page.xaml.cs">
       <DependentUpon>Contacts_Page.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Delete_Event_Page.xaml.cs">
+      <DependentUpon>Delete_Event_Page.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PrivateChatMenu.xaml.cs">
       <DependentUpon>PrivateChatMenu.xaml</DependentUpon>
     </Compile>
@@ -251,6 +254,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Contacts_Page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Delete_Event_Page.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

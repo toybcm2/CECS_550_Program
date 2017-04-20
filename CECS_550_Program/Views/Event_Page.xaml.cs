@@ -41,8 +41,6 @@ namespace CECS_550_Program
             _mediaPlayer = new MediaPlayer();
             _mediaPlayer.Source = MediaSource.CreateFromUri(manifestUri);
             account = Application.Current.Resources["User"] as Models.User_Account;
-            //_mediaPlayer.Play();
-
             
             Task.Run(async () => {
                 string connecting;

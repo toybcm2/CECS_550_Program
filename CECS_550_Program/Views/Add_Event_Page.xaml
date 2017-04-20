@@ -30,6 +30,8 @@
                 <DatePicker x:Name="DateSelection" Margin="0,0,0,0" Width="290" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <TextBlock Text="Time" Margin="0,0,0,0" TextWrapping="Wrap" Width="300" TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
                 <TimePicker x:Name="TimeSelection" Margin="0,0,0,0" Width="295" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Text="Topics" Margin="0,0,0,0" TextWrapping="Wrap" Width="300" TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+                <TextBox x:Name="TopicsTextBox" TextWrapping="Wrap" AcceptsReturn="True" HorizontalAlignment="Center" VerticalAlignment="Center" Width="295" Height="150"/>
                 <Button x:Name="AddButton" Content="Add" Background="Gray" Foreground="White" Click="AddButton_Click" Width="80" HorizontalAlignment="Center" Margin="0,20"/>
             </StackPanel>
         </ScrollViewer>

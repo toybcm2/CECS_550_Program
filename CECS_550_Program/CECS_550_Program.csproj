@@ -119,6 +119,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\ImageConverter.cs" />
+    <Compile Include="Models\Event_Details.cs" />
     <Compile Include="Views\Add_Event_Page.xaml.cs">
       <DependentUpon>Add_Event_Page.xaml</DependentUpon>
     </Compile>

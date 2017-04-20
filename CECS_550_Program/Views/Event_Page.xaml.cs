@@ -21,6 +21,8 @@ namespace CECS_550_Program
         private RTCHandler rtc = new RTCHandler(new RTCConnectionObject());
         private Database_Service.SchedServiceClient client;
 
+        private string queueAccept = "";
+
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         { 
@@ -84,13 +86,31 @@ namespace CECS_550_Program
                 while (true)
                 {
                     string s = await rtc.ReadAsync();
-
-                    Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                    if(s[0] == '1')
                     {
-                        data = DataContext as EventViewModel;
-                        data.Chat += s + "\n";
-                        DataContext = data;
-                    }).AsTask().Wait();
+                        var args = s.Split(':');
+                        if (args[0] == "queue_request")
+                        {
+                            queueAccept = args[1] + ":" + args[2];
+                            this.UserNameBlock.Text = args[1] + ": " + args[2] + " wants to join the queue.";
+                            this.DisplayUserQueueInfoDialog();
+                        }
+                        else if(args[0] == "queue_add")
+                        {
+                            byte[] image = rtc.ReadImage(Convert.ToUInt32(args[2])).GetAwaiter().GetResult();
+                            var tmp = DataContext as EventViewModel;
+                            tmp.AddQueueMember(new QueueMember(args[1], image));
+                        }
+                    }
+                    else
+                    {
+                        Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                        {
+                            data = DataContext as EventViewModel;
+                            data.Chat += s + "\n";
+                            DataContext = data;
+                        }).AsTask().Wait();
+                    }
                 }
             }
             catch (Exception e)
@@ -99,7 +119,9 @@ namespace CECS_550_Program
 
         private void RequestAddToQueueButton_Click(object sender, RoutedEventArgs e)
         {
-            this.DisplayUserQueueInfoDialog();
+            string command = "queue_request:" + account.email + ":" + account.username;
+            rtc.SendCommandAsync(command);
+            //this.DisplayUserQueueInfoDialog();
         }
 
         private void AdminDialog_Opened(ContentDialog sender, ContentDialogOpenedEventArgs args)
@@ -123,7 +145,10 @@ namespace CECS_550_Program
 
             if (meetingInfoDialog == ContentDialogResult.Primary)
             {
-
+                var result = await client.GetUserAsync(queueAccept.Split(':')[0]);
+                string command = "queue_accept:" + queueAccept + ":" + result.Avatar.Length;
+                await rtc.SendCommandAsync(command);
+                await rtc.SendImage(result.Avatar);
             }
             else
             {

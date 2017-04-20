@@ -138,15 +138,46 @@ namespace CECS_550_Program.RTC
         {
             return Task.Run(async () =>
             {
-                byte[] header = new byte[4];
-                await reader.LoadAsync(4);
+                byte[] header = new byte[5];
+                await reader.LoadAsync(5);
                 reader.ReadBytes(header);
 
-                string slength = header[0].ToString() + header[1].ToString() + header[2].ToString() + header[3].ToString();
+                int command = header[0];
+                string slength = header[1].ToString() + header[2].ToString() + header[3].ToString() + header[4].ToString();
                 uint length = Convert.ToUInt32(slength);
 
                 await reader.LoadAsync(length);
-                return reader.ReadString(length);
+                string data = reader.ReadString(length);
+                if (command == 1)
+                {
+                   return "1:" + data;
+                }
+
+                return data;
+            });
+        }
+
+        public Task SendImage(byte[] image)
+        {
+            return Task.Run(async () =>
+            {
+                writer.WriteInt32(image.Length);
+                await writer.StoreAsync();
+                writer.WriteBytes(image);
+                await writer.StoreAsync();
+
+            });
+        }
+
+        public Task<byte[]> ReadImage(uint length)
+        {
+            return Task.Run(async () =>
+            {
+                byte[] tmp = new byte[length];
+                await reader.LoadAsync(length);
+                reader.ReadBytes(tmp);
+
+                return tmp;
             });
         }
     }

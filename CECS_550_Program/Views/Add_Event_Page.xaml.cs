@@ -168,10 +168,11 @@ namespace CECS_550_Program
             int Size = 20;
             string input = "abcdefghijklmnopqrstuvwxyz0123456789";
             StringBuilder builder = new StringBuilder();
+            Random rand = new Random(DateTime.UtcNow.Millisecond);
             char ch;
             for (int i = 0; i < Size; i++)
             {
-                ch = input[new Random(DateTime.UtcNow.Millisecond).Next(0, input.Length)];
+                ch = input[rand.Next(0, input.Length)];
                 builder.Append(ch);
             }
             return builder.ToString();

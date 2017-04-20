@@ -77,11 +77,11 @@ namespace CECS_550_Program
 
         private async void TodaysEvents_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var x = TodaysEvents.SelectedItem;
+            Database_Service.Tasks x = (Database_Service.Tasks) TodaysEvents.SelectedItem;
             Application.Current.Resources.Remove("Event");
             Database_Service.SchedServiceClient client = new Database_Service.SchedServiceClient();
             
-            var eventString = await client.GetSpecificMeetingInfoAsync(1004);
+            var eventString = await client.GetSpecificMeetingInfoAsync(x.TaskID);
             Models.Event_Details eventDetails = new Models.Event_Details()
             {
                 eventName = eventString.TaskName,

@@ -48,7 +48,7 @@ namespace CECS_550_Program
                 string connecting;
                 try
                 {
-                    UpdateChat(connecting = await rtc.ConnectAsync(null, new ConnectionInformationObject(eventDetails.chatID, account.email, account.username, false)));
+                    UpdateChat(connecting = await rtc.ConnectAsync(null, new ConnectionInformationObject(eventDetails.chatID, account.email, account.username, true)));
                 }
                 catch (Exception e)
                 { }

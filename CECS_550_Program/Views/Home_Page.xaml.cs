@@ -75,6 +75,7 @@ namespace CECS_550_Program
         {
             Application.Current.Resources.Remove("Event");
             Database_Service.SchedServiceClient client = new Database_Service.SchedServiceClient();
+            
             var eventString = await client.GetSpecificMeetingInfoAsync(/*Convert.ToInt32(this.HiddenMessage.Text.Trim())*/1);
             Models.Event_Details eventDetails = new Models.Event_Details()
             {
@@ -82,7 +83,7 @@ namespace CECS_550_Program
                 organizerFirstName = eventString.OrganizerFirstName,
                 organizerLastName = eventString.OrganizerLastName,
                 taskID = eventString.TaskID,
-                topics = eventString.Topic,
+                topics = /*eventString.Topic*/"Test Message",
                 isCancelled = eventString.Cancelled,
                 eventTime = eventString.TaskTime,
                 chatID = eventString.ChatID,

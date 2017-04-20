@@ -98,5 +98,39 @@ namespace CECS_550_Program
             catch (Exception e)
             { }
         }
+
+        private void RequestAddToQueueButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.DisplayUserQueueInfoDialog();
+        }
+
+        private void AdminDialog_Opened(ContentDialog sender, ContentDialogOpenedEventArgs args)
+        {
+            ConfirmJoinCheckBox.IsChecked = false;
+        }
+
+        private void ConfirmJoinCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            AdminDialog.IsPrimaryButtonEnabled = true;
+        }
+
+        private void ConfirmJoinCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            AdminDialog.IsPrimaryButtonEnabled = false;
+        }
+
+        private async void DisplayUserQueueInfoDialog()
+        {
+            ContentDialogResult meetingInfoDialog = await AdminDialog.ShowAsync();
+
+            if (meetingInfoDialog == ContentDialogResult.Primary)
+            {
+
+            }
+            else
+            {
+
+            }
+        }
     }
 }

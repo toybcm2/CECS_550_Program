@@ -18,7 +18,7 @@ namespace CECS_550_Program
         public Menu_System()
         {
             this.InitializeComponent();
-            ApplicationView.PreferredLaunchViewSize = new Size(450, 500);
+            ApplicationView.PreferredLaunchViewSize = new Size(450, 650);
             ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
             PageFrame.Navigate(typeof(Login_Page));
             PageFrame.Navigated += PageFrame_Navigated;

@@ -18,10 +18,13 @@
                 <TextBlock Text="Add Event" Margin="10,10,10,10" TextWrapping="Wrap" Width="300" TextAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
                 <TextBlock Text="Event Type" Margin="0,0,0,0" TextWrapping="Wrap" Width="300" TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
-                    <RadioButton x:Name="MeetingRadioButton" Content="Meeting" Tag="Green" GroupName="MeetingTypeGroup" Checked="Choice_Checked"/>
-                    <RadioButton x:Name="AppointmentRadioButton" Content="Appointment" GroupName="MeetingTypeGroup" Tag="Yellow" Checked="Choice_Checked"/>
-                    <RadioButton x:Name="OtherRadioButton" Content="Other" GroupName="MeetingTypeGroup" Tag="Blue" Checked="Choice_Checked"/>
+                    <RadioButton x:Name="MeetingRadioButton" Content="Meeting" GroupName="MeetingTypeGroup" Checked="Choice_Checked"/>
+                    <RadioButton x:Name="ExistingMeetingButton" Content="Existing Meeting" GroupName="MeetingTypeGroup" Checked="Choice_Checked"/>
+                    <RadioButton x:Name="AppointmentRadioButton" Content="Appointment" GroupName="MeetingTypeGroup" Checked="Choice_Checked"/>
+                    <RadioButton x:Name="OtherRadioButton" Content="Other" GroupName="MeetingTypeGroup" Checked="Choice_Checked"/>
                 </StackPanel>
+                <TextBlock Text="Meeting ID" Margin="0,0,0,0" TextWrapping="Wrap" Width="300" TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+                <TextBox x:Name="MeetingIDTextBox" TextAlignment="Center" Width="290"/>
                 <TextBlock Text="Event Name" Margin="0,0,0,0" TextWrapping="Wrap" Width="300" TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
                 <TextBox x:Name="EventNameTextBox" TextAlignment="Center" Width="290"/>
                 <TextBlock Text="Address" Margin="0,0,0,0" TextWrapping="Wrap" Width="300" TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
@@ -31,7 +34,7 @@
                 <TextBlock Text="Time" Margin="0,0,0,0" TextWrapping="Wrap" Width="300" TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
                 <TimePicker x:Name="TimeSelection" Margin="0,0,0,0" Width="295" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <TextBlock Text="Topics" Margin="0,0,0,0" TextWrapping="Wrap" Width="300" TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
-                <TextBox x:Name="TopicsTextBox" TextWrapping="Wrap" AcceptsReturn="True" HorizontalAlignment="Center" VerticalAlignment="Center" Width="295" Height="150"/>
+                <TextBox x:Name="TopicsTextBox" TextWrapping="Wrap" AcceptsReturn="True" HorizontalAlignment="Center" VerticalAlignment="Center" Width="295" Height="75"/>
                 <Button x:Name="AddButton" Content="Add" Background="Gray" Foreground="White" Click="AddButton_Click" Width="80" HorizontalAlignment="Center" Margin="0,20"/>
             </StackPanel>
         </ScrollViewer>

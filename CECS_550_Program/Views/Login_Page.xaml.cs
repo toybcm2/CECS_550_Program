@@ -67,5 +67,13 @@ namespace CECS_550_Program
                 this.Frame.Navigate(typeof(Home_Page));
             }
         }
+
+        private void PasswordTextBox_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            if (e.Key.ToString() == "Enter")
+            {
+                //LoginButton_Click(this, new EventArgs());
+            }
+        }
     }
 }

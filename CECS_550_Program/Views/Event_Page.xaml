@@ -20,21 +20,15 @@
         <MediaPlayerElement x:Name="mediaPlayerElement" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" AreTransportControlsEnabled="True"/>
         <!-- A ScrollViewer can only have one child element - if we want multiple elements inside it, we must 
              wrap them inside a single element like a Grid or StackPanel. -->
-        <ListView x:Name="UpcomingSpeaker" Grid.Row="0" Grid.Column="1">
-            <!--<x:String>1234567891011121314151617181920</x:String> This only begins to display at the number 11. -->
-            
-            <!-- The reason the usernames don't show up is they're hidden by other elements in the page: MediaPlayerElement, probably.
-                 We'll possibly need to modify the Grid for this page's layout and place the user list in the first row, second column,
-                 unless there's something easier we can do. -->
-            
-            <ListView.ItemTemplate>
+        <ListView x:Name="UpcomingSpeaker" Grid.Row="0" Grid.Column="1" ItemsSource="{Binding Queue}">
+            <ListView.ItemTemplate >
                 <DataTemplate x:DataType="x:String">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="400"/>
                         </Grid.ColumnDefinitions>
-                        <Image Source="/Assets/weather/01d.png" Width="20" Height="20" HorizontalAlignment="Left"/>
-                        <TextBlock Text="{x:Bind}" Foreground="Black" FontSize="36" Grid.Column="1" HorizontalAlignment="Right"/>
+                        <Image Source="{Binding Avatar}" Width="20" Height="20" HorizontalAlignment="Left"/>
+                        <TextBlock Text="{Binding UserName}" Foreground="Black" FontSize="36" Grid.Column="1" HorizontalAlignment="Right"/>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>

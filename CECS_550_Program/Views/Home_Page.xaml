@@ -38,7 +38,7 @@
                 <ListView x:Name="TodaysEvents" ItemsSource="{Binding EventList}" SelectionChanged="TodaysEvents_SelectionChanged">
                     <ListView.ItemTemplate >
                         <DataTemplate x:DataType="x:String">
-                            <TextBlock x:Name="Test" Text="{Binding TaskName}" Foreground="Black" FontSize="36" HorizontalAlignment="Right"/>
+                            <TextBlock x:Name="TaskID" Text="{Binding TaskName}" Foreground="Black" FontSize="36" HorizontalAlignment="Right"/>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>

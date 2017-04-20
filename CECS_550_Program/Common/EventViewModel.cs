@@ -14,6 +14,8 @@ namespace CECS_550_Program.Common
         private string chat = String.Empty;
         private ObservableCollection<Database_Service.Tasks> events;
         private BitmapImage avatar;
+        private ObservableCollection<Database_Service.Tasks> members;
+        private ObservableCollection<QueueMember> queue = new ObservableCollection<QueueMember>();
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -51,6 +53,18 @@ namespace CECS_550_Program.Common
             } 
         }
 
+        public void AddQueueMember(QueueMember user)
+        {
+            queue.Add(user);
+            NotifyPropertyChanged("Queue");
+        }
+
+        public void RemoveQueueMember()
+        {
+            queue.RemoveAt(0);
+            NotifyPropertyChanged("Queue");
+        }
+
         public string Chat
         {
             get
@@ -81,6 +95,26 @@ namespace CECS_550_Program.Common
             {
                 avatar = value;
                 NotifyPropertyChanged("Avatar");
+            }
+        }
+
+        public ObservableCollection<Database_Service.Tasks> MeetingParticipants
+        {
+            get { return members; }
+            set
+            {
+                members = value;
+                NotifyPropertyChanged("MeetingParticipants");
+            }
+        }
+
+        public ObservableCollection<QueueMember> Queue
+        {
+            get { return queue; }
+            set
+            {
+                queue = value;
+                NotifyPropertyChanged("Queue");
             }
         }
     }

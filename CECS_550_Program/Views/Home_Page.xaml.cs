@@ -73,6 +73,7 @@ namespace CECS_550_Program
 
         private async void TodaysEvents_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            var x = TodaysEvents.SelectedItem;
             Application.Current.Resources.Remove("Event");
             Database_Service.SchedServiceClient client = new Database_Service.SchedServiceClient();
             var eventString = await client.GetSpecificMeetingInfoAsync(/*Convert.ToInt32(this.HiddenMessage.Text.Trim())*/1);

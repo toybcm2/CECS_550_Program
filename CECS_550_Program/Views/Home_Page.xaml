@@ -62,6 +62,7 @@
                 <TextBlock x:Name="EventNameBlock" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
                 <TextBlock x:Name="AddressBlock" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
                 <TextBlock x:Name="EventTimeBlock" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
+                <TextBlock x:Name="EventMeetingIDBlock" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
                 <CheckBox x:Name="ConfirmJoinCheckBox" Content="Are you sure you want to join event?" Checked="ConfirmJoinCheckBox_Checked" Unchecked="ConfirmJoinCheckBox_Unchecked"/>
             </StackPanel>
         </ContentDialog>

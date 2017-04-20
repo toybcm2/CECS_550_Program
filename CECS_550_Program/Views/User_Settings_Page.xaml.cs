@@ -41,7 +41,7 @@ namespace CECS_550_Program
         private void ConfirmButton_Click(object sender, RoutedEventArgs e)
         {
             Database_Service.SchedServiceClient client = new Database_Service.SchedServiceClient();
-            client.UpdateUserAsync(account.clientID, this.PhoneNumberTextBox.Text.Trim(), "", this.UsernameTextBox.Text.Trim(), null);
+            client.UpdateUserAsync(account.clientID, this.PhoneNumberTextBox.Text.Trim(), "", this.UsernameTextBox.Text.Trim(), account.avatarImage);
             Application.Current.Resources.Remove("User");
             this.DisplaySuccessDialog();
         }

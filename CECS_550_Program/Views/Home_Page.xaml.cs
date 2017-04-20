@@ -81,7 +81,7 @@ namespace CECS_550_Program
             Application.Current.Resources.Remove("Event");
             Database_Service.SchedServiceClient client = new Database_Service.SchedServiceClient();
             
-            var eventString = await client.GetSpecificMeetingInfoAsync(/*Convert.ToInt32(this.HiddenMessage.Text.Trim())*/1);
+            var eventString = await client.GetSpecificMeetingInfoAsync(1004);
             Models.Event_Details eventDetails = new Models.Event_Details()
             {
                 eventName = eventString.TaskName,
@@ -98,6 +98,10 @@ namespace CECS_550_Program
             this.EventNameBlock.Text = eventDetails.eventName;
             this.AddressBlock.Text = eventDetails.address;
             this.EventTimeBlock.Text = Convert.ToString(eventDetails.eventTime);
+            if (eventDetails.chatID != null)
+            {
+                this.EventMeetingIDBlock.Text = "Your meeting ID string is: " + eventDetails.chatID;
+            }
             this.DisplayMeetingInfoDialog();
         }
 

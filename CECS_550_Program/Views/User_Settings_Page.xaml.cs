@@ -1,5 +1,7 @@
 ﻿using CECS_550_Program.Common;
+using CECS_550_Program.RTC;
 using System;
+using Windows.Graphics.Imaging;
 using Windows.Storage;
 using Windows.Storage.Pickers;
 using Windows.Storage.Streams;
@@ -30,6 +32,10 @@ namespace CECS_550_Program
             this.FirstNameTextBox.Text = account.firstName;
             this.LastNameTextBox.Text = account.lastName;
             this.PhoneNumberTextBox.Text = account.phoneNumber;
+            EventViewModel em = new EventViewModel();
+            if (account.avatarImage != null)
+                em.newAvatar(account.avatarImage);
+            this.DataContext = em;
         }
 
         private void ConfirmButton_Click(object sender, RoutedEventArgs e)
@@ -77,10 +83,25 @@ namespace CECS_550_Program
 
             StorageFile file = await picker.PickSingleFileAsync();
 
-            if(file != null)
+            if (file != null)
             {
-                ImageConverter converter = new ImageConverter();
-                byte[] imageBuffer = converter.ToByteArray(file).GetAwaiter().GetResult();
+                IRandomAccessStream stream = await file.OpenAsync(FileAccessMode.Read);
+                BitmapImage image = new BitmapImage();
+                await image.SetSourceAsync(stream.CloneStream());
+                image.UriSource = new Uri(file.Path);
+
+                MyBuffer buffer = new MyBuffer(new byte[stream.Size]);
+                await stream.ReadAsync(buffer.Buffer, (uint)stream.Size, InputStreamOptions.None);
+                var newAvatar = buffer.AsByteArray();
+
+                Database_Service.SchedServiceClient client = new Database_Service.SchedServiceClient();
+                account.avatarImage = newAvatar;
+                Application.Current.Resources["User"] = account;
+                await client.UpdateUserAsync(account.clientID,account.phoneNumber,account.address,account.username, newAvatar);
+
+                EventViewModel e = this.DataContext as EventViewModel;
+                e.newAvatar(newAvatar);
+                DataContext = e;
             }
         }
     }

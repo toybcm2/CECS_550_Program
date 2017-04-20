@@ -1,46 +1,31 @@
-﻿using System;
+﻿using CECS_550_Program.RTC;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
 using Windows.Storage.Streams;
+using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 
 namespace CECS_550_Program.Common
 {
-    public class ImageConverter
+    public class ImageConverter : IValueConverter
     {
-        public async Task<BitmapImage> LoadImageAsync(byte[] imageBuffer)
+        public object Convert(object value, Type targetType, object parameter, string language)
         {
-            using (InMemoryRandomAccessStream ms = new InMemoryRandomAccessStream())
-            {
-                // Writes the image byte array in an InMemoryRandomAccessStream
-                // that is needed to set the source of BitmapImage.
-                using (DataWriter writer = new DataWriter(ms.GetOutputStreamAt(0)))
-                {
-                    writer.WriteBytes(imageBuffer);
-                    await writer.StoreAsync();
-                }
-
-                var image = new BitmapImage();
-                await image.SetSourceAsync(ms);
-
-                return image;
-            }
+            MemoryStream memStream = new MemoryStream((byte[])value, false);
+            BitmapImage empImage = new BitmapImage();
+            empImage.SetSource(memStream.AsRandomAccessStream());
+            return empImage;
         }
 
-        public async Task<byte[]> ToByteArray(StorageFile file)
+        public object ConvertBack(object value, Type targetType, object parameter, string language)
         {
-            using (DataReader inputStream = new DataReader(await file.OpenSequentialReadAsync()))
-            {
-                byte[] buffer = new byte[inputStream.UnconsumedBufferLength];
-                await inputStream.LoadAsync(inputStream.UnconsumedBufferLength);
-                inputStream.ReadBytes(buffer);
-
-                return buffer;
-            }
+            throw new NotImplementedException();
         }
     }
 }

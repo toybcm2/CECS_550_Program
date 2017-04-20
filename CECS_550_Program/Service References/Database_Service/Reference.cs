@@ -570,6 +570,9 @@ namespace CECS_550_Program.Database_Service {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISchedService/UpdatePassword", ReplyAction="http://tempuri.org/ISchedService/UpdatePasswordResponse")]
         System.Threading.Tasks.Task<string> UpdatePasswordAsync(int ClientID, string Hash);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISchedService/AddUserToMeetingThroughChatID", ReplyAction="http://tempuri.org/ISchedService/AddUserToMeetingThroughChatIDResponse")]
+        System.Threading.Tasks.Task<string> AddUserToMeetingThroughChatIDAsync(int ClientID, string ChatID);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -669,6 +672,10 @@ namespace CECS_550_Program.Database_Service {
         
         public System.Threading.Tasks.Task<string> UpdatePasswordAsync(int ClientID, string Hash) {
             return base.Channel.UpdatePasswordAsync(ClientID, Hash);
+        }
+        
+        public System.Threading.Tasks.Task<string> AddUserToMeetingThroughChatIDAsync(int ClientID, string ChatID) {
+            return base.Channel.AddUserToMeetingThroughChatIDAsync(ClientID, ChatID);
         }
         
         public virtual System.Threading.Tasks.Task OpenAsync() {

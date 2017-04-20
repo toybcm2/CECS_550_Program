@@ -16,22 +16,22 @@ namespace CECS_550_Program
     public sealed partial class Event_Page : Page
     {
         private MediaPlayer _mediaPlayer;
-        private Models.User_Account account = new Models.User_Account();
-        private Models.Event_Details eventDetails = new Models.Event_Details();
+        private Models.User_Account account = (Models.User_Account)Application.Current.Resources["User"];
+        private Models.Event_Details eventDetails = (Models.Event_Details)Application.Current.Resources["Event"];
         private RTCHandler rtc = new RTCHandler(new RTCConnectionObject());
         private Database_Service.SchedServiceClient client;
-        private string chatID;
+
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            account = (Models.User_Account)Application.Current.Resources["User"];
-            eventDetails = (Models.Event_Details)Application.Current.Resources["Event"];
+        { 
             client = new Database_Service.SchedServiceClient();
-            chatID = eventDetails.chatID;
             if (eventDetails.topics != null)
             {
                 this.MeetingTopics.Text = eventDetails.topics;
-            }            
+            }
+            EventViewModel model = new EventViewModel();
+            
+            this.DataContext = new EventViewModel();
         }
 
         public Event_Page()
@@ -43,12 +43,12 @@ namespace CECS_550_Program
             account = Application.Current.Resources["User"] as Models.User_Account;
             //_mediaPlayer.Play();
 
-            this.DataContext = new EventViewModel();
+            
             Task.Run(async () => {
                 string connecting;
                 try
                 {
-                    UpdateChat(connecting = await rtc.ConnectAsync(null, new ConnectionInformationObject(chatID, account.email, account.username, false)));
+                    UpdateChat(connecting = await rtc.ConnectAsync(null, new ConnectionInformationObject(eventDetails.chatID, account.email, account.username, false)));
                 }
                 catch (Exception e)
                 { }

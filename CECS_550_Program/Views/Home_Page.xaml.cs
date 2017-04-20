@@ -63,6 +63,10 @@ namespace CECS_550_Program
 
         private void Remove_Events_Button_Click(object sender, RoutedEventArgs e)
         {
+            this.Frame.Navigate(typeof(Delete_Event_Page));
+
+          //  var x = DataContext as EventViewModel;
+            // access specific event by taskID
 
         }
 
@@ -73,6 +77,7 @@ namespace CECS_550_Program
 
         private async void TodaysEvents_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            var x = TodaysEvents.SelectedItem;
             Application.Current.Resources.Remove("Event");
             Database_Service.SchedServiceClient client = new Database_Service.SchedServiceClient();
             

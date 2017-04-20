@@ -46,10 +46,10 @@ namespace CECS_550_Program
             this.DisplaySuccessDialog();
         }
 
-        private void EditPhotoButtonTextBlock_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            //Event will launch window for user to select image from their computer
-        }
+        //private void EditPhotoButtonTextBlock_Tapped(object sender, TappedRoutedEventArgs e)
+        //{
+        //    //Event will launch window for user to select image from their computer
+        //}
 
         private async void DisplaySuccessDialog()
         {

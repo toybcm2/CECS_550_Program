@@ -1,7 +1,11 @@
-﻿using System;
+﻿using CECS_550_Program.RTC;
+using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Windows.Storage;
+using Windows.Storage.Streams;
+using Windows.UI.Xaml.Media.Imaging;
 
 namespace CECS_550_Program.Common
 {
@@ -9,6 +13,7 @@ namespace CECS_550_Program.Common
     {
         private string chat = String.Empty;
         private ObservableCollection<Database_Service.Tasks> events;
+        private BitmapImage avatar;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -26,6 +31,24 @@ namespace CECS_550_Program.Common
         public EventViewModel()
         {
             Chat = "";
+            StorageFile file = StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///Assets/weather/01d.png")).AsTask().GetAwaiter().GetResult();
+            IRandomAccessStream stream = file.OpenAsync(FileAccessMode.Read).AsTask().GetAwaiter().GetResult();
+            MyBuffer buffer = new MyBuffer(new byte[stream.Size]);
+            stream.ReadAsync(buffer.Buffer, (uint)stream.Size, InputStreamOptions.None).AsTask().GetAwaiter().GetResult();
+
+            newAvatar(buffer.AsByteArray());
+        }
+
+        public void newAvatar(byte[] newAvatar)
+        {
+            using (var stream = new InMemoryRandomAccessStream())
+            {
+                stream.WriteAsync(new MyBuffer(newAvatar).Buffer).AsTask().GetAwaiter().GetResult();
+                var x = new BitmapImage();
+                stream.Seek(0);
+                x.SetSource(stream);
+                this.Avatar = x;
+            } 
         }
 
         public string Chat
@@ -51,5 +74,14 @@ namespace CECS_550_Program.Common
             }
         }
 
+        public BitmapImage Avatar
+        {
+            get { return avatar; }
+            set
+            {
+                avatar = value;
+                NotifyPropertyChanged("Avatar");
+            }
+        }
     }
 }

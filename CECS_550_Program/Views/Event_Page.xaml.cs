@@ -16,22 +16,24 @@ namespace CECS_550_Program
     public sealed partial class Event_Page : Page
     {
         private MediaPlayer _mediaPlayer;
-        private Models.User_Account account = new Models.User_Account();
-        private Models.Event_Details eventDetails = new Models.Event_Details();
+        private Models.User_Account account = (Models.User_Account)Application.Current.Resources["User"];
+        private Models.Event_Details eventDetails = (Models.Event_Details)Application.Current.Resources["Event"];
         private RTCHandler rtc = new RTCHandler(new RTCConnectionObject());
         private Database_Service.SchedServiceClient client;
-        private string chatID;
+
+        private string queueAccept = "";
+
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            account = (Models.User_Account)Application.Current.Resources["User"];
-            //eventDetails = (Models.Event_Details)Application.Current.Resources["Event"];
+        { 
             client = new Database_Service.SchedServiceClient();
-            chatID = eventDetails.chatID;
             if (eventDetails.topics != null)
             {
                 this.MeetingTopics.Text = eventDetails.topics;
-            }            
+            }
+            EventViewModel model = new EventViewModel();
+            
+            this.DataContext = new EventViewModel();
         }
 
         public Event_Page()
@@ -41,14 +43,12 @@ namespace CECS_550_Program
             _mediaPlayer = new MediaPlayer();
             _mediaPlayer.Source = MediaSource.CreateFromUri(manifestUri);
             account = Application.Current.Resources["User"] as Models.User_Account;
-            //_mediaPlayer.Play();
-
-            this.DataContext = new EventViewModel();
+            
             Task.Run(async () => {
                 string connecting;
                 try
                 {
-                    UpdateChat(connecting = await rtc.ConnectAsync(null, new ConnectionInformationObject(chatID, account.email, account.username, false)));
+                    UpdateChat(connecting = await rtc.ConnectAsync(null, new ConnectionInformationObject(eventDetails.chatID, account.email, account.username, false)));
                 }
                 catch (Exception e)
                 { }
@@ -86,17 +86,74 @@ namespace CECS_550_Program
                 while (true)
                 {
                     string s = await rtc.ReadAsync();
-
-                    Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                    if(s[0] == '1')
                     {
-                        data = DataContext as EventViewModel;
-                        data.Chat += s + "\n";
-                        DataContext = data;
-                    }).AsTask().Wait();
+                        var args = s.Split(':');
+                        if (args[0] == "queue_request")
+                        {
+                            queueAccept = args[1] + ":" + args[2];
+                            this.UserNameBlock.Text = args[1] + ": " + args[2] + " wants to join the queue.";
+                            this.DisplayUserQueueInfoDialog();
+                        }
+                        else if(args[0] == "queue_add")
+                        {
+                            byte[] image = rtc.ReadImage(Convert.ToUInt32(args[2])).GetAwaiter().GetResult();
+                            var tmp = DataContext as EventViewModel;
+                            tmp.AddQueueMember(new QueueMember(args[1], image));
+                        }
+                    }
+                    else
+                    {
+                        Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                        {
+                            data = DataContext as EventViewModel;
+                            data.Chat += s + "\n";
+                            DataContext = data;
+                        }).AsTask().Wait();
+                    }
                 }
             }
             catch (Exception e)
             { }
+        }
+
+        private void RequestAddToQueueButton_Click(object sender, RoutedEventArgs e)
+        {
+            string command = "queue_request:" + account.email + ":" + account.username;
+            rtc.SendCommandAsync(command);
+            //this.DisplayUserQueueInfoDialog();
+        }
+
+        private void AdminDialog_Opened(ContentDialog sender, ContentDialogOpenedEventArgs args)
+        {
+            ConfirmJoinCheckBox.IsChecked = false;
+        }
+
+        private void ConfirmJoinCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            AdminDialog.IsPrimaryButtonEnabled = true;
+        }
+
+        private void ConfirmJoinCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            AdminDialog.IsPrimaryButtonEnabled = false;
+        }
+
+        private async void DisplayUserQueueInfoDialog()
+        {
+            ContentDialogResult meetingInfoDialog = await AdminDialog.ShowAsync();
+
+            if (meetingInfoDialog == ContentDialogResult.Primary)
+            {
+                var result = await client.GetUserAsync(queueAccept.Split(':')[0]);
+                string command = "queue_accept:" + queueAccept + ":" + result.Avatar.Length;
+                await rtc.SendCommandAsync(command);
+                await rtc.SendImage(result.Avatar);
+            }
+            else
+            {
+
+            }
         }
     }
 }

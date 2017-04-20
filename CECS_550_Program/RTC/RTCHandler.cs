@@ -47,7 +47,7 @@ namespace CECS_550_Program.RTC
                 reader = new DataReader(clientSocket.InputStream);
                 
                 
-                await SendCommandAsync("connect:" + connectionInfo.UserID + ":" + connectionInfo.UserAlias + ":" + connectionInfo.ChatRoomID);
+                await SendCommandAsync("connect:" + connectionInfo.UserID + ":" + connectionInfo.UserAlias + ":" + connectionInfo.Administrator + ":" + connectionInfo.ChatRoomID);
                 string response = await ReadAsync();
 
                 return response;

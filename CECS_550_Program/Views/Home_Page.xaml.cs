@@ -28,6 +28,9 @@ namespace CECS_550_Program
 
         public Home_Page()
         {
+            // TODO: Confirm that "Task" works or if we need to reference the event by something else
+       //     Models.Event_Details task = Application.Current.Resources["Task"] as Models.Event_Details;
+
             this.InitializeComponent();
             this.Update_Weather();
             Timer.Tick += Timer_Tick;

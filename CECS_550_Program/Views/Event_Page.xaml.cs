@@ -25,7 +25,7 @@ namespace CECS_550_Program
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             account = (Models.User_Account)Application.Current.Resources["User"];
-            eventDetails = (Models.Event_Details)Application.Current.Resources["Event"];
+            //eventDetails = (Models.Event_Details)Application.Current.Resources["Event"];
             client = new Database_Service.SchedServiceClient();
             chatID = eventDetails.chatID;
             if (eventDetails.topics != null)

@@ -1,20 +1,13 @@
-﻿using System;
+﻿using CECS_550_Program.Common;
+using CECS_550_Program.RTC;
+using System;
 using System.Threading.Tasks;
-using Windows.Foundation;
-using Windows.Graphics.Display;
-using Windows.Media.Capture;
 using Windows.Media.Core;
 using Windows.Media.Playback;
-using Windows.Storage;
-using Windows.System.Display;
-using Windows.UI;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using CECS_550_Program.Common;
-using CECS_550_Program.RTC;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -24,6 +17,7 @@ namespace CECS_550_Program
     {
         private MediaPlayer _mediaPlayer;
         private Models.User_Account account = new Models.User_Account();
+        private Models.Event_Details eventDetails = new Models.Event_Details();
         private RTCHandler rtc = new RTCHandler(new RTCConnectionObject());
         private Database_Service.SchedServiceClient client;
         private string chatID;
@@ -31,8 +25,13 @@ namespace CECS_550_Program
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             account = (Models.User_Account)Application.Current.Resources["User"];
+            eventDetails = (Models.Event_Details)Application.Current.Resources["Event"];
             client = new Database_Service.SchedServiceClient();
-            chatID = (string)e.Parameter;
+            chatID = eventDetails.chatID;
+            if (eventDetails.topics != null)
+            {
+                this.MeetingTopics.Text = eventDetails.topics;
+            }            
         }
 
         public Event_Page()

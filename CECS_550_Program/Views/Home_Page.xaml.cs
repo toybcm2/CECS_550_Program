@@ -1,9 +1,9 @@
-﻿using System;
+﻿using CECS_550_Program.Common;
+using System;
 using System.Collections.ObjectModel;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Imaging;
-using CECS_550_Program.Common;
 
 // Home_Page.xaml: List of events
 
@@ -58,13 +58,6 @@ namespace CECS_550_Program
 
         private void Add_Events_Button_Click(object sender, RoutedEventArgs e)
         {
-            /*ObservableCollection<String> items = new ObservableCollection<string>();
-            for (int i = 0; i < 5; i++)
-            {
-                char[] chars = {'a','b','c'};
-                items.Add(new String(chars));
-            }
-            DataContext = items;*/
             this.Frame.Navigate(typeof(Add_Event_Page));
         }
 
@@ -78,9 +71,57 @@ namespace CECS_550_Program
 
         }
 
-        private void View_Meeting_Changed(object sender, SelectionChangedEventArgs e)
+        private async void TodaysEvents_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            Application.Current.Resources.Remove("Event");
+            Database_Service.SchedServiceClient client = new Database_Service.SchedServiceClient();
+            var eventString = await client.GetSpecificMeetingInfoAsync(/*Convert.ToInt32(this.HiddenMessage.Text.Trim())*/1);
+            Models.Event_Details eventDetails = new Models.Event_Details()
+            {
+                eventName = eventString.TaskName,
+                organizerFirstName = eventString.OrganizerFirstName,
+                organizerLastName = eventString.OrganizerLastName,
+                taskID = eventString.TaskID,
+                topics = eventString.Topic,
+                isCancelled = eventString.Cancelled,
+                eventTime = eventString.TaskTime,
+                chatID = eventString.ChatID,
+                address = eventString.TaskAddress
+            };
+            Application.Current.Resources.Add("Event", eventDetails);
+            this.EventNameBlock.Text = eventDetails.eventName;
+            this.AddressBlock.Text = eventDetails.address;
+            this.EventTimeBlock.Text = Convert.ToString(eventDetails.eventTime);
+            this.DisplayMeetingInfoDialog();
+        }
 
+        private async void DisplayMeetingInfoDialog()
+        {
+            ContentDialogResult meetingInfoDialog = await EventContentDialog.ShowAsync();
+
+            if (meetingInfoDialog == ContentDialogResult.Primary)
+            {
+                this.Frame.Navigate(typeof(Event_Page));
+            }
+            else
+            {
+
+            }
+        }
+
+        private void EventContentDialog_Opened(ContentDialog sender, ContentDialogOpenedEventArgs args)
+        {
+            ConfirmJoinCheckBox.IsChecked = false;
+        }
+
+        private void ConfirmJoinCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            EventContentDialog.IsPrimaryButtonEnabled = true;
+        }
+
+        private void ConfirmJoinCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            EventContentDialog.IsPrimaryButtonEnabled = false;
         }
     }
 }

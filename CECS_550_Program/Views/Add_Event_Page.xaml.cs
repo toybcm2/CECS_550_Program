@@ -53,7 +53,12 @@ namespace CECS_550_Program
             }
             else if (radioSelection.Equals("Existing Meeting"))
             {
-                var eventString = await client.GetSpecificMeetingInfoAsync(Convert.ToInt32(this.MeetingIDTextBox.Text.Trim()));
+                var eventString = await client.AddUserToMeetingThroughChatIDAsync(account.clientID, this.MeetingIDTextBox.Text);
+                if (eventString == "")
+                {
+                    this.DisplaySuccessDialog();
+                }
+                /*var eventString = await client.GetSpecificMeetingInfoAsync(Convert.ToInt32(this.MeetingIDTextBox.Text.Trim()));
                 Models.Event_Details eventDetails = new Models.Event_Details()
                 {
                     eventName = eventString.TaskName,
@@ -75,7 +80,7 @@ namespace CECS_550_Program
                 else
                 {
                     this.DisplayCancelledDialog();
-                }                
+                }   */             
             }
             else
             {

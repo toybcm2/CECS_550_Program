@@ -88,7 +88,7 @@ namespace CECS_550_Program
                 organizerFirstName = eventString.OrganizerFirstName,
                 organizerLastName = eventString.OrganizerLastName,
                 taskID = eventString.TaskID,
-                topics = /*eventString.Topic*/"Test Message",
+                topics = eventString.Topic,
                 isCancelled = eventString.Cancelled,
                 eventTime = eventString.TaskTime,
                 chatID = eventString.ChatID,

@@ -89,17 +89,24 @@ namespace CECS_550_Program
                     if(s[0] == '1')
                     {
                         var args = s.Split(':');
-                        if (args[0] == "queue_request")
+                        if (args[1] == "queue_request")
                         {
-                            queueAccept = args[1] + ":" + args[2];
-                            this.UserNameBlock.Text = args[1] + ": " + args[2] + " wants to join the queue.";
-                            this.DisplayUserQueueInfoDialog();
+                            queueAccept = args[2] + ":" + args[3];
+                            Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                            {
+                                this.UserNameBlock.Text = args[2] + ": " + args[3] + " wants to join the queue.";
+                                this.DisplayUserQueueInfoDialog();
+                            }).AsTask().Wait();
                         }
-                        else if(args[0] == "queue_add")
+                        else if(args[1] == "queue_add")
                         {
-                            byte[] image = rtc.ReadImage(Convert.ToUInt32(args[2])).GetAwaiter().GetResult();
-                            var tmp = DataContext as EventViewModel;
-                            tmp.AddQueueMember(new QueueMember(args[1], image));
+                            //string newUser = args[2];
+                            var stuff = await client.GetUserAsync(args[2]);
+                            Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                            {
+                                var tmp = DataContext as EventViewModel;
+                                tmp.AddQueueMember(new QueueMember(args[3], stuff.Avatar));
+                            }).AsTask().Wait();
                         }
                     }
                     else

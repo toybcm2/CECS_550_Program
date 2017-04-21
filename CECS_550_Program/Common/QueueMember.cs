@@ -17,17 +17,20 @@ namespace CECS_550_Program.Common
         public QueueMember(string name, byte[] image)
         {
             Username = name;
-            newAvatar(image);
+            if(image == null)
+                Avatar = new EventViewModel().Avatar;
+            else
+                newAvatar(image);
         }
 
-        private void newAvatar(byte[] newAvatar)
+        private async void newAvatar(byte[] newAvatar)
         {
             using (var stream = new InMemoryRandomAccessStream())
             {
-                stream.WriteAsync(new MyBuffer(newAvatar).Buffer).AsTask().GetAwaiter().GetResult();
-                var x = new BitmapImage();
+                await stream.WriteAsync(new MyBuffer(newAvatar).Buffer);
+                BitmapImage x = new BitmapImage();
                 stream.Seek(0);
-                x.SetSource(stream);
+                await x.SetSourceAsync(stream);
                 this.Avatar = x;
             }
         }
@@ -35,7 +38,10 @@ namespace CECS_550_Program.Common
         public BitmapImage Avatar
         {
             get { return avatar; }
-            set { avatar = value; }
+            set
+            {
+                avatar = value;
+            }
         }
         public string Username
         {

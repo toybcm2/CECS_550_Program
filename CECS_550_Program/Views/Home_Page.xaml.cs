@@ -42,13 +42,18 @@ namespace CECS_550_Program
 
         private async void Update_Weather()
         {
-            var position = await LocationManager.GetPosition();
-            RootObject myWeather = await OpenWeatherMapProxy.GetWeather(position.Coordinate.Latitude, position.Coordinate.Longitude);
-            string icon = String.Format("ms-appx:///Assets/Weather/{0}.png", myWeather.weather[0].icon);
-            Weather_Image.Source = new BitmapImage(new Uri(icon, UriKind.Absolute));
-            Result_Text_Block.Text =
-                ((int)myWeather.main.temp).ToString() + " °F" +
-                " " + myWeather.weather[0].description.ToUpper();
+            try
+            {
+                var position = await LocationManager.GetPosition();
+                RootObject myWeather = await OpenWeatherMapProxy.GetWeather(position.Coordinate.Latitude, position.Coordinate.Longitude);
+                string icon = String.Format("ms-appx:///Assets/Weather/{0}.png", myWeather.weather[0].icon);
+                Weather_Image.Source = new BitmapImage(new Uri(icon, UriKind.Absolute));
+                Result_Text_Block.Text =
+                    ((int)myWeather.main.temp).ToString() + " °F" +
+                    " " + myWeather.weather[0].description.ToUpper();
+            }
+            catch (Exception e)
+            { }
         }
 
         private void Timer_Tick(object sender, object e)

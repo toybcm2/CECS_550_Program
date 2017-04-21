@@ -172,13 +172,13 @@ namespace CECS_550_Program.RTC
         public Task<byte[]> ReadImage(uint length)
         {
             return Task.Run(async () =>
-            {
-                byte[] tmp = new byte[length];
-                await reader.LoadAsync(length);
-                reader.ReadBytes(tmp);
+           {
+               byte[] tmp = new byte[length];
+               await reader.LoadAsync(length);
+               reader.ReadBytes(tmp);
 
-                return tmp;
-            });
+               return tmp;
+           });
         }
     }
 }

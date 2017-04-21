@@ -41,7 +41,7 @@ namespace CECS_550_Program
                 string connecting;
                 try
                 {
-                    UpdateChat(connecting = await rtc.ConnectAsync(null, new ConnectionInformationObject("General", "toybcm@gmail.com", false)));
+                    UpdateChat(connecting = await rtc.ConnectAsync(null, new ConnectionInformationObject("General", "toybcm2@gmail.com", false)));
                 }
                 catch (Exception e)
                 { }

@@ -34,14 +34,10 @@ namespace CECS_550_Program
             account = (Models.User_Account)Application.Current.Resources["User"];
         }
 
-        //private void DeleteButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    Database_Service.SchedServiceClient client = new Database_Service.SchedServiceClient();
-        //    client.CancelMeetingAsync(1);
-        //}
-        public void InitializeComponent()
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-
+            Database_Service.SchedServiceClient client = new Database_Service.SchedServiceClient();
+        //    client.CancelMeetingAsync( );
         }
     }
 }
